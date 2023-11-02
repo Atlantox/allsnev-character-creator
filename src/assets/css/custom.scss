@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Cardinal';
+    src: url('@/assets/fonts/Cardinal.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Cardinal', sans-serif !important;
+    background-color: $primary;
+    color: $font-color !important;
+    letter-spacing: 2px;
+}
+
+input{
+    letter-spacing: 2px;
+}
+
+.rol-button{
+    border-radius: 10px;
+    border:2px black solid;
+    background-color: $rol-button-background;
+}
+
+.rol-button:hover{
+    background-color: $rol-button-hover;
+}

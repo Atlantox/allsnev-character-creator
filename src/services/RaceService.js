@@ -13,7 +13,7 @@ class RaceService{
                 },
             },
             {
-                name: 'Orcos',
+                name: 'Orco',
                 icon: 'hammer.png',
                 image: 'Orc.webp',
                 abilities: {
@@ -24,7 +24,7 @@ class RaceService{
                 },
             },
             {
-                name: 'Elfos blancos',
+                name: 'Elfo blanco',
                 icon: 'ciclo.png',
                 image: 'high_elf.jpg',
                 abilities: {
@@ -35,7 +35,7 @@ class RaceService{
                 },
             },
             {
-                name: 'Elfos negros',
+                name: 'Elfo negro',
                 icon: 'balance.png',
                 image: 'dark_elf.jpg',
                 abilities: {
@@ -46,7 +46,7 @@ class RaceService{
                 },
             },
             {
-                name: 'Demonios',
+                name: 'Demonio',
                 icon: 'cono.png',
                 image: 'oni.jpeg',
                 abilities: {
@@ -57,9 +57,9 @@ class RaceService{
                 },
             },
             {
-                name: 'Porcinos',
+                name: 'Porcino',
                 icon: 'butcher_knife.png',
-                image: 'porcino.jpg',
+                image: 'porcino.jpeg',
                 abilities: {
                     'Transformar grasa': 'Transformás grasa',
                 },
@@ -70,7 +70,7 @@ class RaceService{
             {
                 name: 'Ratápido',
                 icon: 'flechas.png',
-                image: 'rat.webp',
+                image: 'ratapido.jpeg',
                 abilities: {
                     'Ojo de ladrón': 'Mirás como ladrón',
                 },
