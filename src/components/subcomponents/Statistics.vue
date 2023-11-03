@@ -43,7 +43,7 @@ const selectAll = (targetInput) => {
             </button>
         </div>
 
-        <table class="col-9 fs-3">
+        <table class="col-12 fs-3">
             <thead class="fs-2 text-center">
                 <tr>
                     <th class="p-1">Característica</th>
@@ -102,7 +102,7 @@ td, th{
 }
 
 table{
-    background-color:$secondary;
+    background-color:$terciary;
 }
 
 .modifier{

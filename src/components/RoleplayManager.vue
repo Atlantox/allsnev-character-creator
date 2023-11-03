@@ -9,11 +9,19 @@ import RaceService from '@/services/RaceService.js';
 const raceService = new RaceService();
 const races = raceService.getRaces();
 
+import ClassService from '@/services/ClassService.js';
+const classService = new ClassService();
+const classes = classService.getClasses();
+
+import GodService from '@/services/GodService.js';
+const godService = new GodService();
+const gods = godService.getGods();
+
 const characters = ref([]);
 
 const current_character = ref({
     basic_information:{
-        "Nombre": 'el pepe',
+        "Nombre": '',
         "Edad": '',
         "Origen": '',
         "Profesión": '',
@@ -21,14 +29,6 @@ const current_character = ref({
         "Niv": '',
         "Exp": ''
     },
-    race: '',
-    class: '',
-    subclass: '',
-    classLevel: '',
-    abilities: [
-        '',
-        ''
-    ],
     statistics: {
         "Fuerza": {base:0, actual:0},
         "Destreza": {base:0, actual:0},
@@ -37,6 +37,17 @@ const current_character = ref({
         "Percepción": {base:0, actual:0},
         "Conocimiento": {base:0, actual:0},
     },
+    race: '',
+    classInfo: {
+        mainClass: '',
+        subClass: '',
+        classLevel: 0,
+        god: '',
+    },
+    abilities: [
+        '',
+        ''
+    ],
     treats: [
         '',
         ''
@@ -67,7 +78,7 @@ const generateStatistics = () => {
 </script>
 
 <template>
-    <main class="container-fluid p-4">
+    <main class="container-fluid p-3">
         <div class="row w-100 m-0 rol-container py-3">
             <section class="row w-100 text-center m-0">
                 <h1 class="p-0">
@@ -89,14 +100,18 @@ const generateStatistics = () => {
                         />
                     </div>
                 </div>
-                <div class="row justify-content-center col-5">
+                <div class="row justify-content-center col-3">
                     <Statistics 
                     :statistics = current_character.statistics
                     @generateStatistics="generateStatistics"
                     />
                 </div>
-                <div class="row justify-content-center col-2">
-                    <ClassSelect />
+                <div class="row justify-content-center col-4">
+                    <ClassSelect 
+                    :classes=classes
+                    :currentClass=current_character.classInfo
+                    :gods=gods
+                    />
                 </div>
             </section>
         </div>

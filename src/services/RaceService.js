@@ -81,7 +81,7 @@ class RaceService{
             {
                 name: 'Córvido',
                 icon: 'libro.png',
-                image: 'corvido.jpg',
+                image: 'corvido.jpeg',
                 abilities: {
                     'Mimetizar técnica': 'Mimetizas una técnica',
                 },

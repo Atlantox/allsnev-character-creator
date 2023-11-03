@@ -22,7 +22,7 @@ const changeRace = (index) => {
 </script>
 
 <template>
-    <div class="col-12 row justify-content-center p-1 pt-2 text-center border border-2 border-black race-section">
+    <div class="col-12 row justify-content-center p-1 pt-2 text-center border border-2 border-black rol-subwindow">
         <figure class="col-12 d-flex flex-column align-items-center justify-content-center m-0">
             <img 
             class="w-100 border border-2 border-black"  
@@ -58,9 +58,6 @@ const changeRace = (index) => {
 
 *{
     color:$font-color;
-}
-.race-section{
-    background-color: $secondary;
 }
 
 .race-active{

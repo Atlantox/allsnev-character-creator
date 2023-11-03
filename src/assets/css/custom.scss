@@ -10,7 +10,7 @@ body {
     letter-spacing: 2px;
 }
 
-input{
+input, select{
     letter-spacing: 2px;
 }
 
@@ -22,4 +22,12 @@ input{
 
 .rol-button:hover{
     background-color: $rol-button-hover;
+}
+
+.rol-window{
+    background-color: $secondary;
+}
+
+.rol-subwindow{
+    background-color: $terciary;
 }
