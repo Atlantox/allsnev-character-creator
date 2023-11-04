@@ -22,7 +22,7 @@ class GodService{
                 abilities: {
                     'Sembrar el caos': 'te vuevles loco',
                     'intercambiar característica': 'untercambias una caracteristica'
-                },
+                }
             },
         };
     }

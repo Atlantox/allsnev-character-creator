@@ -3,7 +3,7 @@ class RaceService{
         this.races = {
             'Humano':{
                 icon: 'trebol.png',
-                image: 'human.jpg',
+                image: 'humano.jpeg',
                 abilities: {
                     'Inquebrantable': 'Cuando te vais a morir no te morís',
                 },
@@ -25,7 +25,7 @@ class RaceService{
           
             'Elfo blanco': {
                 icon: 'ciclo.png',
-                image: 'high_elf.jpg',
+                image: 'elfo_blanco.jpeg',
                 abilities: {
                     'Transferir mágia': 'Transfieres magia',
                 },

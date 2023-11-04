@@ -1,30 +1,44 @@
 @font-face {
-    font-family: 'Cardinal';
-    src: url('@/assets/fonts/Cardinal.ttf') format('truetype');
+    font-family: 'MedievalSharp';
+    src: url('@/assets/fonts/MedievalSharp.ttf') format('truetype');
 }
 
+
 body {
-    font-family: 'Cardinal', sans-serif !important;
+    font-family: $my-font; 
     background-color: $primary;
     color: $font-color !important;
-    letter-spacing: 2px;
+    font-variant:small-caps;
+    text-shadow: 0 0 2px black;
 }
 
 input, select{
-    letter-spacing: 2px;
+    font-family: $my-font;
+    
 }
 
 .rol-input{
     padding: 0; 
     margin: 0; 
     border: none; 
+    font-family: $my-font;
     border-bottom:2px black solid;
     color: $font-color;
     outline: none; 
     background: transparent; 
 }
 
+.rol-select{
+    margin:0;
+    padding:0;
+    background:$rol-button-background;
+    border-bottom:2px black solid;
+    border-radius: 5px;
+    color:black;
+}
+
 .rol-button{
+    font-family: $my-font;
     border-radius: 10px;
     border:2px black solid;
     background-color: $rol-button-background;
@@ -34,6 +48,21 @@ input, select{
     background-color: $rol-button-hover;
 }
 
+.rol-button-active{
+    background-color:$rol-button-active;
+    box-shadow: 0px 0px 50px rgba(255, 255, 255, 0.158) inset;
+}
+
+.rol-button2{
+    font-family: $my-font;
+    border-radius: 10px;
+    border:2px black solid;
+    background-color: $rol-button-background2;
+}
+
+.rol-button2:hover{
+    background-color: $rol-button-hover2;
+}
 .rol-window{
     background-color: $secondary;
 }

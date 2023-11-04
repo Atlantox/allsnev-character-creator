@@ -124,6 +124,18 @@ class ClassService{
                     }
                 },
             },
+
+            'Luchador': {
+                abilities: {
+                    'Sintonizaadw3dawr con mi adorado': 'hablas con tu dios',
+                    'Lanzar mildawdaagro': 'Lanzas un milagro'
+                },
+                treats:{
+                    'Dominio del casfq3glérigo': 'Dominio en lanzar milagros',
+                    'Torpeza del claawga2wférigo': 'Desventaja con armas que no sean bastón y cetro'
+                },
+                subClasses: { },
+            },
         };
     }
 

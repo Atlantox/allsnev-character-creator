@@ -24,7 +24,7 @@ let a = 'asadaw';
 </script>
 
 <template>
-    <div class="row justify-content-center w-100 m-0 mb-2 fs-5">
+    <div class="row justify-content-center w-100 p-0 m-0 mb-2 fs-5">
         <div
         v-for="(value, field, index) in props.fields"
         :key="index"
