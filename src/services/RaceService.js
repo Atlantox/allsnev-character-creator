@@ -1,8 +1,7 @@
 class RaceService{
     constructor(){
-        this.races = [
-            {
-                name: 'Humano',
+        this.races = {
+            'Humano':{
                 icon: 'trebol.png',
                 image: 'human.jpg',
                 abilities: {
@@ -12,8 +11,8 @@ class RaceService{
                     'Adaptabilidad': 'Te adaptás',
                 },
             },
-            {
-                name: 'Orco',
+
+            'Orco': {
                 icon: 'hammer.png',
                 image: 'Orc.webp',
                 abilities: {
@@ -23,8 +22,8 @@ class RaceService{
                     'Fuerza innata': 'Sos más fuerte',
                 },
             },
-            {
-                name: 'Elfo blanco',
+          
+            'Elfo blanco': {
                 icon: 'ciclo.png',
                 image: 'high_elf.jpg',
                 abilities: {
@@ -34,21 +33,23 @@ class RaceService{
                     'Belleza': 'Sos bello',
                 },
             },
-            {
-                name: 'Elfo negro',
+           
+            'Elfo negro': {
                 icon: 'balance.png',
-                image: 'dark_elf.jpg',
+                image: 'elfo_negro.jpeg',
                 abilities: {
-                    'Reacción instantánea': 'Reacciones de manera instantánea',
+                    'Lectura secreta': 'Haces una prueba de percepción CD11 para descubrir un aspecto de la personalidad de una persona con Alcance hábil de 10 metros. Debes verle el rostro. 2 usos. Se recarga cada descanso corto.',
                 },
                 treats:{
-                    'Sentidos agudos': 'Tendrás los sentidos más agudos',
+                    'Sentidos agudos': 'Bonificación de +1 en pruebas de percepción.',
+                    'Visión nocturna': 'Puedes ver en la oscuridad normal hasta 50m y 10m en oscuridad total.',
+                    'Sentidos nocturnos': 'Mientras haya oscuridad obtienes una bonificación de +2 en percepción.'
                 },
             },
-            {
-                name: 'Demonio',
+          
+            'Demonio': {
                 icon: 'cono.png',
-                image: 'oni.jpeg',
+                image: 'demonio.jpeg',
                 abilities: {
                     'Seducción': 'Seducís a alguien',
                 },
@@ -56,10 +57,10 @@ class RaceService{
                     'Encanto natural': 'Sos encantador naturalmente',
                 },
             },
-            {
-                name: 'Porcino',
+           
+            'Porcino': {
                 icon: 'butcher_knife.png',
-                image: 'porcino.jpeg',
+                image: 'porcino.jpg',
                 abilities: {
                     'Transformar grasa': 'Transformás grasa',
                 },
@@ -67,8 +68,8 @@ class RaceService{
                     'Maestro chef': 'Cocinás mejor',
                 },
             },
-            {
-                name: 'Ratápido',
+            
+            'Ratápido': {
                 icon: 'flechas.png',
                 image: 'ratapido.jpeg',
                 abilities: {
@@ -78,8 +79,8 @@ class RaceService{
                     'Saltaro innato': 'Saltás más',
                 },
             },
-            {
-                name: 'Córvido',
+
+            'Córvido': {
                 icon: 'libro.png',
                 image: 'corvido.jpeg',
                 abilities: {
@@ -89,7 +90,7 @@ class RaceService{
                     'Erudito': 'Sabés más',
                 },
             },
-        ];
+        }
     }
 
     getRaces(){

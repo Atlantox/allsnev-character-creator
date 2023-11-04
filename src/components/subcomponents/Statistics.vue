@@ -63,7 +63,7 @@ const selectAll = (targetInput) => {
                     </td>
                     <td class="text-center">
                         <input 
-                        class="text-center w-50" 
+                        class="text-center w-50 rol-input" 
                         :id="stat + 'base-input'"
                         v-model="props.statistics[stat].base" 
                         type="text" 
@@ -74,7 +74,7 @@ const selectAll = (targetInput) => {
                     </td>
                     <td class="text-center">
                         <input 
-                        class="text-center w-50" 
+                        class="text-center w-50 rol-input" 
                         :id="stat + 'actual-input'"
                         v-model="props.statistics[stat].actual" 
                         type="text" 
@@ -87,15 +87,6 @@ const selectAll = (targetInput) => {
 </template>
 
 <style scoped lang="scss">
-input {
-    padding: 0; 
-    margin: 0; 
-    border: none; 
-    border-bottom:2px black solid;
-    color: $font-color;
-    outline: none; 
-    background: transparent; 
-}
 
 td, th{
     border:2px black solid;

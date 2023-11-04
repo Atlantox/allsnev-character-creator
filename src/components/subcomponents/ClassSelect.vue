@@ -13,17 +13,29 @@ const props = defineProps({
         required: true
     }
 })
+
+const emit = defineEmits(['changeClass'])
+
+const changeClass = () => {
+    emit ('changeClass')
+}
+
 </script>
 
 <template>
     <div class="col-12 row justify-content-start align-items-start p-1 pt-2 text-center border border-2 border-black rol-subwindow">
         <div class="row col-12 m-0 p-0">
-            <div class="col-6 p-3 d-flex flex-column align-items-start">
+            <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start">
                 <h2 class="">
                     Clase
                 </h2>
-                <select class="w-100 fs-3" v-model="props.currentClass.mainClass" name="classSelect" id="">
-                    <option value="">&nbsp;</option>
+                <select 
+                class="w-100 fs-3" 
+                v-model="props.currentClass.mainClass" 
+                name="classSelect" 
+                id=""
+                @change="changeClass"
+                >
                     <template
                     v-for="(value, myClass, index) in props.classes"
                     :key="index"
@@ -42,7 +54,7 @@ const props = defineProps({
             >
                 <div 
                 v-if="props.classes[props.currentClass.mainClass].subClasses !== {}"
-                class="col-6 p-3 d-flex flex-column align-items-start"
+                class="col-12 p-3 pb-4 d-flex flex-column align-items-start"
                 >
                     <h2 class="">
                         Sub clase
@@ -65,7 +77,7 @@ const props = defineProps({
             <template 
             v-if="props.currentClass.mainClass === 'Clérigo'"
             >
-                <div class="col-6 p-3 d-flex flex-column align-items-start">
+                <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start">
                     <h2 class="">
                         Tu Adorado
                     </h2>
@@ -75,12 +87,26 @@ const props = defineProps({
                         :key="index"
                         >    
                             <option 
-                            :value="index"
+                            :class="{
+                                'text-danger': value.available === false
+                            }"
+                            :value="god"
                             >
                                 {{ god }}
                             </option>
                             </template>
                     </select>
+                </div>
+            </template>
+
+            <template 
+            v-if="['Clérigo', 'Hechicero'].includes(props.currentClass.mainClass)"
+            >
+                <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start">
+                    <h2 class="">
+                        Nivel de clase
+                    </h2>
+                    <input class="w-25 text-center rol-input fs-3" type="text">
                 </div>
             </template>
         </div>

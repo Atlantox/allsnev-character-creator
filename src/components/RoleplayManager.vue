@@ -1,9 +1,11 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import CharacterInfo from './subcomponents/CharacterInfo.vue';
 import RaceSelect from './subcomponents/RaceSelect.vue';
 import Statistics from './subcomponents/Statistics.vue';
 import ClassSelect from './subcomponents/ClassSelect.vue';
+import AbilitiesList from './subcomponents/AbilitiesList.vue';
+import CharacterLore from './subcomponents/CharacterLore.vue';
 
 import RaceService from '@/services/RaceService.js';
 const raceService = new RaceService();
@@ -37,21 +39,23 @@ const current_character = ref({
         "Percepción": {base:0, actual:0},
         "Conocimiento": {base:0, actual:0},
     },
-    race: '',
+    race: 'Humano',
     classInfo: {
         mainClass: '',
         subClass: '',
         classLevel: 0,
         god: '',
     },
-    abilities: [
-        '',
-        ''
-    ],
-    treats: [
-        '',
-        ''
-    ],
+    talents:{
+        abilities: [
+            '',
+            ''
+        ],
+        treats: [
+            '',
+            ''
+        ],
+    },
     inventory: [
         {
             name: '',
@@ -61,11 +65,72 @@ const current_character = ref({
 })
 
 
-const current_race = ref(races[0]);
+
+// Computed functions
+const getTalents = computed(() => {
+    const currentRace = current_character.value.race;
+    const currentClass = current_character.value.classInfo;
+
+    let raceAbilities = races[currentRace].abilities;
+    let raceTreats = races[currentRace].treats;
+
+    let classAbilities = {};
+    let classTreats = {};
+    if(classes[currentClass.mainClass] !== undefined){
+        classAbilities = classes[currentClass.mainClass].abilities;
+        classTreats = classes[currentClass.mainClass].treats;
+
+    }
+
+    let subclassAbilities = {};
+    let subclassTreats = {};
+    if(currentClass.subClass !== ''){
+        if(classes[currentClass.mainClass].subClasses !== undefined){
+            if(classes[currentClass.mainClass].subClasses[currentClass.subClass] !== undefined){
+                subclassAbilities = classes[currentClass.mainClass].subClasses[currentClass.subClass].abilities;
+                subclassTreats = classes[currentClass.mainClass].subClasses[currentClass.subClass].treats;
+            }
+        }
+    }
+
+    let godAbilities = {};
+    console.log('DIOS');
+    console.log(currentClass.god);
+    console.log(gods);
+    if(currentClass.god !== '')
+        godAbilities = gods[currentClass.god].abilities;
+    
+    let totalAbilities = Object.assign({},
+        raceAbilities,
+        classAbilities,
+        subclassAbilities,
+        godAbilities
+    );
+
+    let totalTreats = Object.assign({},
+        raceTreats,
+        classTreats,
+        subclassTreats
+    );
+
+    return {
+        abilities: totalAbilities,
+        treats: totalTreats
+    };
+});
+
+current_character.value.talents = getTalents;
 
 // Emits 
 const changeRace = (new_race) => {
-    current_race.value = races[new_race];
+    current_character.value.race = new_race;
+}
+
+const changeClass = () => {
+    current_character.value.classInfo.subClass = '';
+    current_character.value.classInfo.god = '';
+    current_character.value.classInfo.classLevel = 0;
+    // cambiar habilidades y rasgos
 }
 
 const generateStatistics = () => {
@@ -79,7 +144,8 @@ const generateStatistics = () => {
 
 <template>
     <main class="container-fluid p-3">
-        <div class="row w-100 m-0 rol-container py-3">
+        <div class="row w-100 m-0 rol-container py-3 flex-wrap">
+            <!-- First row -->
             <section class="row w-100 text-center m-0">
                 <h1 class="p-0">
                     Creador de Personajes de Allsnev
@@ -94,23 +160,39 @@ const generateStatistics = () => {
                 <div class="row justify-content-center col-3">
                     <div class="row justify-content-center col-12">
                         <RaceSelect 
-                        :race=current_race
+                        :currentRace=current_character.race
                         :races=races
                         @changeRace="changeRace"
                         />
                     </div>
                 </div>
-                <div class="row justify-content-center col-3">
+                <div class="row justify-content-center col-4">
                     <Statistics 
                     :statistics = current_character.statistics
                     @generateStatistics="generateStatistics"
                     />
                 </div>
-                <div class="row justify-content-center col-4">
+                <div class="row justify-content-center col-2">
                     <ClassSelect 
                     :classes=classes
                     :currentClass=current_character.classInfo
                     :gods=gods
+                    @changeClass="changeClass"
+                    />
+                </div>
+            </section>
+
+            <!-- Second row -->
+            <section class="row w-100 m-0 p-0 justify-content-around text-center p-3">
+                <div class="col-12 row justify-content-center align-items-start p-2">
+                    <AbilitiesList 
+                    :talents=current_character.talents
+                    />
+                </div>
+
+                <div class="col-12 row justify-content-center p-2">
+                    <CharacterLore 
+
                     />
                 </div>
             </section>

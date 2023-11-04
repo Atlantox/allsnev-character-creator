@@ -14,6 +14,16 @@ input, select{
     letter-spacing: 2px;
 }
 
+.rol-input{
+    padding: 0; 
+    margin: 0; 
+    border: none; 
+    border-bottom:2px black solid;
+    color: $font-color;
+    outline: none; 
+    background: transparent; 
+}
+
 .rol-button{
     border-radius: 10px;
     border:2px black solid;

@@ -2,12 +2,12 @@
 import { defineProps } from 'vue';
 
 const props = defineProps({
-    race:{
-        type: Object,
+    currentRace:{
+        type: String,
         required: true
     },
     races:{
-        type: Array,
+        type: Object,
         required: true
     },
     
@@ -18,7 +18,6 @@ const emit = defineEmits(['changeRace']);
 const changeRace = (index) => {
     emit ('changeRace', index);
 }
-
 </script>
 
 <template>
@@ -26,28 +25,27 @@ const changeRace = (index) => {
         <figure class="col-12 d-flex flex-column align-items-center justify-content-center m-0">
             <img 
             class="w-100 border border-2 border-black"  
-            :src="'src/assets/images/races/' + props.race.image" 
+            :src="'src/assets/images/races/' + props.races[currentRace].image" 
             alt="race image">
             <h2 class="m-0">
-                {{ props.race.name }}
+                {{ currentRace }}
             </h2>
             
         </figure>
         <ul class="col-11 d-flex list-unstyled flex-wrap align-items-center justify-content-around m-0">
             <li
             class="col-3 p-1 m-0"
-            v-for="(race, index) in props.races"
+            v-for="(value, race, index) in props.races"
             :key="index"
             >
                 <button 
-                @click="changeRace(index)" 
+                @click="changeRace(race)"
                 :class="{
                     'w-75 p-2 m-0 d-flex align-items-center mx-2 rol-button border border-black': true,
-                    'race-active': props.races[index].name === props.race.name
+                    'race-active': race === props.currentRace
                 }"
                 >
-                    <img class="w-100" :src="'src/assets/icons/races/' + race.icon" :alt="race.name + ' icon'">
-                    <!-- <span class="fs-5 m-0">{{ race.name }}</span> -->
+                    <img class="w-100" :src="'src/assets/icons/races/' + value.icon" :alt="value.name + ' icon'">
                 </button>
             </li>
         </ul>
