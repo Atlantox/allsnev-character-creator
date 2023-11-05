@@ -289,7 +289,7 @@ const addExistantTreat = () => {
                                     v-if="props.classInfo.subClass !== ''"
                                     >
                                         <template
-                                        v-if="props.classes[props.classInfo.mainClass].subClasses !== {}"
+                                        v-if="props.classes[props.classInfo.mainClass].subClasses !==false"
                                         >
                                             <option 
                                             
@@ -323,10 +323,6 @@ const addExistantTreat = () => {
 <style scoped lang="scss">
 th, td{
     border: 2px black solid;
-}
-
-textarea{
-    background: $primary-light;
 }
 
 .talent-content{

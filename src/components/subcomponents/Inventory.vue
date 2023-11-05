@@ -93,10 +93,6 @@ th, td{
     border: 2px black solid;
 }
 
-textarea{
-    background: $primary-light;
-}
-
 .talent-content{
     text-align:left   
 }

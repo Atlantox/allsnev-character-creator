@@ -3,12 +3,25 @@ class ClassService{
         this.classes = {
             'Guerrero': {
                 abilities: {
-                    'Golpe fuerte': 'pegas fuerte',
-                    'Golpe temerario': 'desgasta el arma'
+                    'Golpe fuerte': 
+                        `Tu siguiente golpe hará 1d4 de daño extra al impactar pero tendrá una desmejora de -2 a la precisión.
+                        Maestría: El daño aumenta a 1d6.`,
+                    'Sobreesfuerzo físico': 
+                        `Si estás fuera de combate y acabas de perder una prueba de fuerza, tendrás un intento extra. Al terminar, 
+                        las extremidades que hayas utilizado para la acción, quedarán inhabilitadas por 5 minutos por sobreesfuerzo.
+                        Maestría: La inhabilitación solo se dará si fallas la prueba.`,
+                    'Sed de violencia': 
+                        `Enloqueces por los siguientes 3 turnos, atacando a objetivos al azar e infligiendo 1d4 de daño adicional. Requiere nivel 8.
+                        Maestría: Si atacas a un aliado, lo atacarás con Desventaja.`,
+                    'Golpe temerario': 
+                        `Realizas un poderoso y temerario ataque que reduce la durabilidad del arma usada para infligir un dado extra 
+                        del daño del arma. Si el ataque falla quedas expuesto, haciendo que el siguiente ataque hacia ti sea con Ventaja. Requiere nivel 12.
+                        Maestría: Si fallas, lanza una moneda, si ganas, evitarás quedarte expuesto.`,
                 },
                 treats:{
-                    'Dominio del guerrero': 'Dominio de todas las armas de fuerza',
-                    'Torpeza de destreza': 'Desventaja con armas y herramientas de destreza'
+                    'Dominio del guerrero': 'Dominio en tipo de armas cuerpo a cuerpo de fuerza y lanzamiento de objetos pesados.',
+                    'Torpeza mágica': 'No pueden aprender ni lanzar hechizos o milagros.',
+                    'Torpeza manual': ' Desventaja al usar armas o herramientas de destreza.'
                 },
                 subClasses: {
                     'Bárbaro': {
@@ -16,14 +29,16 @@ class ClassService{
                             'Fuerza barbárica': 'armas de dos manos en cada mano'
                         },
                         treats: {
-                            'Dominio bárbaro': 'Pegas más desnudo'
+                            'Dominio bárbaro': 
+                                `Al no llevar armadura equipada su armadura es igual a su modificador de constitución -1. 
+                                Desventaja en pruebas de inteligencia. Desventaja en pruebas de ataque al llevar armadura puesta.`
                         },
                     },
                     'Mixto':{
                         abilities: {},
                         treats: {
                             'Hechicero principiante': 'Puedes aprender y usar los hechizos de nivel 1 de una escuela de magia',
-                            'Habilidoso principiante': 'Puedes usar armas de destreza con facilidad',
+                            'Habilidoso principiante': 'Puedes usar armas y herramientas de destreza con normalidad',
                         }
                     }
                 },
@@ -134,7 +149,7 @@ class ClassService{
                     'Dominio del casfq3glérigo': 'Dominio en lanzar milagros',
                     'Torpeza del claawga2wférigo': 'Desventaja con armas que no sean bastón y cetro'
                 },
-                subClasses: { },
+                subClasses: false,
             },
         };
     }

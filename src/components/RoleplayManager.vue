@@ -213,7 +213,7 @@ resetTalents();
 
             <section class="row w-100 m-0 p-0 justify-content-around ">
                 <div class="row p-0 justify-content-center col-4">
-                    <div class="row p-0 justify-content-center col-10">
+                    <div class="row p-0 justify-content-center col-11">
                         <RaceSelect 
                         :currentRace=current_character.race
                         :races=races

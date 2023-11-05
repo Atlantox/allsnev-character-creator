@@ -14,7 +14,10 @@ body {
 
 input, select{
     font-family: $my-font;
-    
+}
+
+textarea{
+    background: $primary-light;
 }
 
 .rol-input{

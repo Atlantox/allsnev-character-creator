@@ -18,18 +18,17 @@ const props = defineProps({
             <tr>
                 <td>
                     <div class="w-100 p-1">
-                        <textarea class="w-100 fs-5" v-model="props.lore" cols="30" rows="10" placeholder="Trasfondo del personaje"></textarea>
+                        <textarea class="w-100 fs-6" v-model="props.lore" cols="30" rows="15" placeholder="Trasfondo del personaje"></textarea>
                     </div>
                 </td>
             </tr>
 
         </table>
-        <h1 class="w-100">
-            Trasfondo
-        </h1>
     </div>
 </template>
 
 <style scoped>
-
+th, td{
+    border: 2px black solid;
+}
 </style>

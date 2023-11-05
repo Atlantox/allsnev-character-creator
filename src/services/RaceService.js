@@ -5,16 +5,26 @@ class RaceService{
                 icon: 'trebol.png',
                 image: 'humano.jpeg',
                 abilities: {
-                    'Inquebrantable': 'Cuando te vais a morir no te morís',
+                    'Inquebrantable': 
+                        `Si entras en Luchando por tu vida. Haz una Prueba de salvación (constitución) CD7 si fallas caes inconsciente sin riesgo de morir, 
+                        en el caso contrario reestablece tu salud a 1, aumenta en 2 todas tus características hasta el final del combate y obtienes un 
+                        turno inmediatamente después. Un uso. Se recarga tras haberte recuperado por completo y haber hecho un descanso largo.`,
                 },
                 treats:{
-                    'Adaptabilidad': 'Te adaptás',
+                    'Preparación adaptable': 
+                        `Obtiene una bonificación de +1 la característica a elección del jugador hasta el siguiente descanso largo. Al terminar un descanso 
+                        largo puede cambiar esa bonificación a una característica distinta.`,
+                    'Adaptabilidad térmica': 
+                        `Al pasar 48 horas en climas fríos o calientes obtienes Resistencia al calor II o Resistencia al 
+                        frío II dependiendo del clima. Se pierde al pasar 48 horas fuera del clima.`,
+                    'Conocedor de lugares':
+                        `Bonificación de +1 en pruebas de sabiduría relacionadas con lectura de mapas y descifrar origen de objetos o personas.`
                 },
             },
 
             'Orco': {
                 icon: 'hammer.png',
-                image: 'Orc.webp',
+                image: 'orco.jpeg',
                 abilities: {
                     'Grito de guerra': 'Gritas fuerte',
                 },
