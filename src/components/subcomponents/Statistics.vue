@@ -82,7 +82,7 @@ const negativeEffects = negativeEffectsService.getEffects();
 
                     <td class="text-center">
                         <input 
-                        class="text-center w-25 rol-input" 
+                        class="text-center w-25 rol-input align-middle" 
                         :id="stat + 'base-input'"
                         v-model="props.statistics[stat].base" 
                         type="text" 
@@ -124,11 +124,11 @@ const negativeEffects = negativeEffectsService.getEffects();
 
                     <td class="text-center">
                         <input 
-                        class="text-center w-25 rol-input" 
+                        class="text-center w-25 rol-input align-middle" 
                         :id="state + 'actual-input'"
                         v-model="props.currentState[state].max" 
                         type="text" 
-                        @click="selectAll(stat + 'actual-input')">
+                        @click="selectAll(state + 'actual-input')">
                     </td>
 
                     <td class="text-center">
@@ -137,7 +137,7 @@ const negativeEffects = negativeEffectsService.getEffects();
                         :id="state + 'base-input'"
                         v-model="props.currentState[state].current" 
                         type="text" 
-                        @click="selectAll(stat + 'base-input')">
+                        @click="selectAll(state + 'base-input')">
                     </td>
                 </tr>
             </tbody>

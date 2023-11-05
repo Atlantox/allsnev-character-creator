@@ -95,7 +95,7 @@ const addExistantTreat = () => {
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="no-print">
                     <td>
                         <div class="w-100 p-1">
                             <textarea class="w-100 fs-5" v-model="customAbility.name" cols="30" rows="3" placeholder="Nombre de habilidad personalizada"></textarea>
@@ -115,7 +115,7 @@ const addExistantTreat = () => {
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="no-print">
                     <td colspan="2">
                         <h5 class="w-100 m-0 p-0 text-center align-middle">
                             Agregar una habilidad de tu raza, clase o dios
@@ -230,7 +230,7 @@ const addExistantTreat = () => {
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="no-print">
                     <td>
                         <div class="w-100 p-1">
                             <textarea class="w-100 fs-5" v-model="customTreat.name" cols="30" rows="3" placeholder="Nombre de rasgo personalizado"></textarea>
@@ -250,7 +250,7 @@ const addExistantTreat = () => {
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="no-print">
                     <td colspan="2">
                         <h5 class="w-100 m-0 p-0 text-center align-middle">
                             Agregar un rasgo de tu raza o clase

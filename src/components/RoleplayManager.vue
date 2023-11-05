@@ -8,6 +8,7 @@ import ClassSelect from './subcomponents/ClassSelect.vue';
 import AbilitiesList from './subcomponents/AbilitiesList.vue';
 import Inventory from './subcomponents/Inventory.vue';
 import CharacterLore from './subcomponents/CharacterLore.vue';
+import ExportOptions from './subcomponents/ExportOptions.vue';
 
 import RaceService from '@/services/RaceService.js';
 const raceService = new RaceService();
@@ -193,10 +194,61 @@ const generateStatistics = () => {
 }
 
 resetTalents();
+
+const { jsPDF } = "jspdf";
+
+const exportAsPDF = () => {    
+    var elementToExport = document.getElementById('characterSheet');
+
+    /*
+    
+    // Obtén el ancho y alto del elemento a exportar
+    var elementWidth = elementToExport.offsetWidth;
+    var elementHeight = elementToExport.offsetHeight;
+
+    // Crea un documento PDF con tamaño personalizado
+    var doc = new jsPDF({
+        unit: 'px',  // Unidad de medida en píxeles
+        format: [elementWidth, elementHeight]  // Establece el tamaño de la página según el tamaño del elemento
+    });
+
+    // Exporta el elemento al PDF
+    doc.html(elementToExport, {
+        callback: function (pdf) {
+            pdf.save(current_character.value.basic_information.name + '.pdf');
+        }
+    });
+
+    */
+
+    html2canvas(elementToExport, {
+        ignoreElements: element => {
+            // Ignora elementos con la clase "ignorar"
+            return element.classList.contains('no-print');
+        },
+        scale: 1
+        }).then(canvas => {
+        // Obtiene el contexto 2D del canvas
+        const contentDataURL = canvas.toDataURL('image/png');
+        
+        // Crea un objeto PDF
+        const pdf = new jsPDF();
+        
+        // Ajusta el tamaño del PDF al tamaño del canvas
+        const pdfWidth = pdf.internal.pageSize.getWidth();
+        const pdfHeight = pdf.internal.pageSize.getHeight();
+        const ratio = pdfHeight / canvas.height;
+        const canvasHeight = canvas.height * ratio;
+        pdf.addImage(contentDataURL, 'PNG', 0, 0, pdfWidth, canvasHeight);
+        
+        // Guarda el PDF como un archivo
+        pdf.save('archivo.pdf');
+    });
+}
 </script>
 
 <template>
-    <main class="container-fluid p-3">
+    <main class="container-fluid p-3"  id="characterSheet">
         <div class="row w-100 m-0 rol-container py-3 flex-wrap">
             <!-- First row -->
             <section class="row w-100 text-center m-0 p-0">
@@ -265,7 +317,7 @@ resetTalents();
             <!-- Third row -->
             <section class="row w-100 m-0 p-0 justify-content-around text-center p-3">
                 <div class="col-6 row justify-content-center">
-                    <inventory
+                    <Inventory
                     :characterInventory="current_character.inventory"
                     @addInventoryObject="addInventoryObject"
                     @deleteInventoryObject="deleteInventoryObject"
@@ -275,6 +327,15 @@ resetTalents();
                 <div class="col-6 row justify-content-center">
                     <CharacterLore 
                     :lore="current_character.lore"
+                    />
+                </div>
+            </section>
+
+            <!-- Fourth row -->
+            <section class="row w-100 m-0 p-0 justify-content-around text-center p-3">
+                <div class="col-12 row justify-content-center">
+                    <ExportOptions
+                    @exportAsPDF="exportAsPDF"
                     />
                 </div>
             </section>
