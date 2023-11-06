@@ -52,6 +52,9 @@ const selectAll = (targetInput) => {
 import NegativeEffectService from '@/services/NegativeEffectService.js';
 const negativeEffectsService = new NegativeEffectService();
 const negativeEffects = negativeEffectsService.getEffects();
+
+const statisticInputClass = 'text-center w-50 h-50 rol-input align-bottom align-bottom'
+const statisticTdClass = 'text-center align-bottom'
 </script>
 
 <template>
@@ -62,7 +65,7 @@ const negativeEffects = negativeEffectsService.getEffects();
             </h4>
         </div>
 
-        <table class="col-12 fs-4">
+        <table class="col-12 fs-5">
             <thead class="fs-3 text-center">
                 <tr>
                     <th class="p-1">Característica</th>
@@ -80,9 +83,9 @@ const negativeEffects = negativeEffectsService.getEffects();
                         {{ stat }}
                     </td>
 
-                    <td class="text-center">
+                    <td :class="statisticTdClass">
                         <input 
-                        class="text-center w-25 rol-input align-middle" 
+                        :class="statisticInputClass" 
                         :id="stat + 'base-input'"
                         v-model="props.statistics[stat].base" 
                         type="text" 
@@ -93,9 +96,9 @@ const negativeEffects = negativeEffectsService.getEffects();
                         {{ getModifier(props.statistics[stat].current) }}
                     </td>
 
-                    <td class="text-center">
+                    <td :class="statisticTdClass">
                         <input 
-                        class="text-center w-25 rol-input" 
+                        :class="statisticInputClass" 
                         :id="stat + 'actual-input'"
                         v-model="props.statistics[stat].current" 
                         type="text" 
@@ -105,7 +108,7 @@ const negativeEffects = negativeEffectsService.getEffects();
             </tbody>
         </table>
 
-        <table class="col-9 fs-4 mt-3">
+        <table class="col-11 fs-5 mt-3">
             <thead class="fs-3 text-center">
                 <tr>
                     <th class="p-1">Característica</th>
@@ -122,18 +125,18 @@ const negativeEffects = negativeEffectsService.getEffects();
                         {{ state }}
                     </td>
 
-                    <td class="text-center">
+                    <td :class="statisticTdClass">
                         <input 
-                        class="text-center w-25 rol-input align-middle" 
+                        :class="statisticInputClass" 
                         :id="state + 'actual-input'"
                         v-model="props.currentState[state].max" 
                         type="text" 
                         @click="selectAll(state + 'actual-input')">
                     </td>
 
-                    <td class="text-center">
+                    <td :class="statisticTdClass">
                         <input 
-                        class="text-center w-25 rol-input" 
+                        :class="statisticInputClass" 
                         :id="state + 'base-input'"
                         v-model="props.currentState[state].current" 
                         type="text" 

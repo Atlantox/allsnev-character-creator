@@ -57,7 +57,7 @@ const resetTalents = () => {
             v-if="props.currentClass.mainClass !== ''"
             >
                 <div 
-                v-if="props.classes[props.currentClass.mainClass].subClasses !== {}"
+                v-if="props.classes[props.currentClass.mainClass].subClasses !== false"
                 class="col-12 p-3 pb-4 d-flex flex-column align-items-start"
                 >
                     <h2 class="">
@@ -131,5 +131,7 @@ const resetTalents = () => {
 
 <style scoped lang="scss">
 
-
+input, select, option{
+    color:$font-color;
+}
 </style>

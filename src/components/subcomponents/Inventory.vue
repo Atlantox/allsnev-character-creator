@@ -58,7 +58,7 @@ const deleteInventoryObject = (objectName) => {
                     </td>
                 </tr>
 
-                <tr>
+                <tr class="no-print">
                     <td>
                         <div class="w-100 p-1">
                             <textarea class="w-100 fs-5" v-model="customItem.name" cols="30" rows="3" placeholder="Nombrel de objeto"></textarea>
