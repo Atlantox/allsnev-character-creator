@@ -334,8 +334,8 @@ resetTalents();
             </section>
 
             <section class="row w-100 m-0 p-0 justify-content-around ">
-                <div class="row p-0 justify-content-center col-4">
-                    <div class="row p-0 justify-content-center col-11">
+                <div class="row p-0 justify-content-center col-3">
+                    <div class="row p-0 justify-content-center col-12">
                         <RaceSelect 
                         :currentRace=current_character.race
                         :races=races
@@ -403,7 +403,7 @@ resetTalents();
 
             <!-- Fourth row -->
             <section class="row w-100 m-0 p-0 justify-content-around text-center p-3 no-print">
-                <div class="col-12 row justify-content-center">
+                <div class="col-12 row justify-content-around">
                     <ExportOptions
                     @saveCurrentCharacter="saveCurrentCharacter"
                     @exportCharacter="exportCharacter"
