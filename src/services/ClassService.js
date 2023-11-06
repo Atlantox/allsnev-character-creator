@@ -20,7 +20,8 @@ class ClassService{
                 },
                 treats:{
                     'Dominio del guerrero': 'Dominio en tipo de armas cuerpo a cuerpo de fuerza y lanzamiento de objetos pesados.',
-                    'Torpeza mágica': 'No pueden aprender ni lanzar hechizos o milagros.',
+                    'Torpeza mágica': 'No pueden aprender ni lanzar hechizos.',
+                    'Torpeza divina': 'No pueden aprender ni lanzar milagros.',
                     'Torpeza manual': ' Desventaja al usar armas o herramientas de destreza.'
                 },
                 subClasses: {
@@ -42,6 +43,183 @@ class ClassService{
                         }
                     }
                 },
+            },
+
+            'Hechicero': {
+                abilities: {
+                    'Proyectil mágico':
+                        `Disparas un proyectil de magia pura que inflige 1d4 de daño mágico con un Alcance hábil de 10 metros. Costo de 3 de maná.
+                        Maestría: El daño aumenta a 1d6`,
+                },
+                treats:{
+                    'Dominio del hechicero': `Domina la magia y uso de báculos`,
+                    'Torpeza divina': 'No pueden aprender ni lanzar milagros.',
+                    'Torpeza musculosa': 'Desventaja en pruebas de fuerza.',
+                    'Dependencia a los báculos': `Desventaja en lanzar hechizos sin un báculo`,
+                },
+                subClasses: { 
+                    'Elementalista': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                    'Conjurador': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                    'Ilusionista': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                    'Alterador': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                    'Nigromante': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                    'Dominador': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                    'Protector': {
+                        abilities: {
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                            '':
+                                ``,
+                        },
+                        treats: false,
+                    },
+                 },
             },
 
             'Cazador': {
@@ -115,6 +293,18 @@ class ClassService{
                 },
             },
 
+            'Monje': {
+                abilities: {
+                    'Sintonizaadw3dawr con mi adorado': 'hablas con tu dios',
+                    'Lanzar mildawdaagro': 'Lanzas un milagro'
+                },
+                treats:{
+                    'Dominio del casfq3glérigo': 'Dominio en lanzar milagros',
+                    'Torpeza del claawga2wférigo': 'Desventaja con armas que no sean bastón y cetro'
+                },
+                subClasses: false,
+            },
+
             'Clérigo': {
                 abilities: {
                     'Sintonizar con mi adorado': 'hablas con tu dios',
@@ -140,16 +330,33 @@ class ClassService{
                 },
             },
 
-            'Luchador': {
+
+            'Bardo': {
                 abilities: {
-                    'Sintonizaadw3dawr con mi adorado': 'hablas con tu dios',
-                    'Lanzar mildawdaagro': 'Lanzas un milagro'
+                    '':
+                        ``,
+                    '':
+                        ``,
+                    '':
+                        ``,
+                    '':
+                        ``,
+                    '':
+                        ``,
+                    '':
+                        ``,
                 },
                 treats:{
-                    'Dominio del casfq3glérigo': 'Dominio en lanzar milagros',
-                    'Torpeza del claawga2wférigo': 'Desventaja con armas que no sean bastón y cetro'
+                    '':
+                        ``,
+                    '':
+                        ``,
+                    '':
+                        ``,
+                    '':
+                        ``,
                 },
-                subClasses: false,
+                subClasses: { },
             },
         };
     }

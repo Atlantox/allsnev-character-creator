@@ -26,10 +26,17 @@ class RaceService{
                 icon: 'hammer.png',
                 image: 'orco.jpeg',
                 abilities: {
-                    'Grito de guerra': 'Gritas fuerte',
+                    'Grito de guerra': 
+                        `Efectúas un potente grito que afecta a los enemigos frente a ti. El siguiente ataque hacia los enemigos afectados se hacen con 
+                        Ventaja. Un uso. Se recarga tras un descanso largo. Alcance: 8 metros.`,
                 },
                 treats:{
-                    'Fuerza innata': 'Sos más fuerte',
+                    'Fuerza innata': 
+                        `Bonificador de +1 en pruebas de fuerza.`,
+                    'Resistencia al calor II': 
+                        `Resiste el calor de nivel 2 sin ningún problema.`,
+                    'Saber de rocas': 
+                        `Bonificación de +1 en pruebas de sabiduría relacionadas con metalurgia y piedras.`,
                 },
             },
           
@@ -37,10 +44,17 @@ class RaceService{
                 icon: 'ciclo.png',
                 image: 'elfo_blanco.jpeg',
                 abilities: {
-                    'Transferir mágia': 'Transfieres magia',
+                    'Transferir maná':
+                        `Transfieres maná de una persona (donador) a otra (recipiente). El donador pierde 2 de maná y otorga 1 de maná al recipiente. 
+                        Debes estar en contacto con ambas personas. Tú puedes ser tanto donador como recipiente. Genera cierto ardor a los involucrados.`,
                 },
                 treats:{
-                    'Belleza': 'Sos bello',
+                    'Intelecto innato': 
+                        `Bonificación de +1 en pruebas de inteligencia.`,
+                    'Belleza':
+                        `Bonificación de +1 en pruebas de carisma ante personas interesadas en tu género.`,
+                    'Robar esencia':
+                        `Después de cada combate recuperas 1 de maná por cada enemigo abatido por ti.` ,
                 },
             },
            
@@ -48,12 +62,16 @@ class RaceService{
                 icon: 'balance.png',
                 image: 'elfo_negro.jpeg',
                 abilities: {
-                    'Lectura secreta': 'Haces una prueba de percepción CD11 para descubrir un aspecto de la personalidad de una persona con Alcance hábil de 10 metros. Debes verle el rostro. 2 usos. Se recarga cada descanso corto.',
+                    'Lectura secreta': `Haces una prueba de percepción CD11 para descubrir un aspecto de la personalidad de una persona con 
+                        Alcance hábil de 10 metros. Debes verle el rostro. 2 usos. Se recarga cada descanso corto.`,
                 },
                 treats:{
-                    'Sentidos agudos': 'Bonificación de +1 en pruebas de percepción.',
-                    'Visión nocturna': 'Puedes ver en la oscuridad normal hasta 50m y 10m en oscuridad total.',
-                    'Sentidos nocturnos': 'Mientras haya oscuridad obtienes una bonificación de +2 en percepción.'
+                    'Sentidos agudos': 
+                        'Bonificación de +1 en pruebas de percepción.',
+                    'Visión nocturna': 
+                        'Puedes ver en la oscuridad normal hasta 50m y 10m en oscuridad total.',
+                    'Sentidos nocturnos': 
+                        'Mientras haya oscuridad obtienes una bonificación de +2 en percepción.',
                 },
             },
           
@@ -61,10 +79,17 @@ class RaceService{
                 icon: 'cono.png',
                 image: 'demonio.jpeg',
                 abilities: {
-                    'Seducción': 'Seducís a alguien',
+                    'Seducir': 
+                        `Haces una prueba de carisma CD11 para engatusar a una persona obligándola a que te responda con la verdad a la 
+                        siguiente pregunta. 2 usos. Se recarga cada descanso corto.`,
                 },
                 treats:{
-                    'Encanto natural': 'Sos encantador naturalmente',
+                    'Encanto natural':
+                        `Bonificación de +1 en pruebas de carisma.` ,
+                    'Resistencia a la ponzoña':
+                        ` Ventaja en Pruebas de salvación (constitución) de Enfermedades, Hemorragia y Venenos.` ,
+                    'Maestro del cardio':
+                        `La capacidad pulmonar es el doble de lo usual. Eres más veloz.` ,
                 },
             },
            
@@ -72,10 +97,17 @@ class RaceService{
                 icon: 'butcher_knife.png',
                 image: 'porcino.jpg',
                 abilities: {
-                    'Transformar grasa': 'Transformás grasa',
+                    'Convertir grasa': 
+                        `Conviertes tu grasa en poder muscular. Hasta el final del combate puedes convertir hasta 5 puntos de constitución 
+                        en fuerza. Un uso. Se recarga con un descanso corto. La vida perdida por la conversión no se recupera.`,
                 },
                 treats:{
-                    'Maestro chef': 'Cocinás mejor',
+                    'Maestro chef':
+                        `Las comidas cocinadas ganan una bonificación de +5 nutrientes.` ,
+                    'Resistencia al frío II':
+                        `Resiste el frío de nivel 2 sin ningún problema.` ,
+                    'Robustez':
+                        `Su salud es igual a su constitución x 4. Eres más lento y saltas menos.` ,
                 },
             },
             
@@ -83,10 +115,18 @@ class RaceService{
                 icon: 'flechas.png',
                 image: 'ratapido.jpeg',
                 abilities: {
-                    'Ojo de ladrón': 'Mirás como ladrón',
+                    'Ojo de ladrón': 
+                        `Ves el bolso, saco u otro recipiente de tela o cristal, haz una prueba de sabiduría o percepción CD12, si ganas, 
+                        adivinas acertadamente un objeto dentro del recipiente. Si el recipiente lo lleva alguien, debes estar fuera de su campo 
+                        de visión. 2 usos. Se recarga con un descanso largo`,
                 },
                 treats:{
-                    'Saltaro innato': 'Saltás más',
+                    'Trepador innato':
+                        `Bonificación de +1 en las pruebas de destreza relacionadas con escalar y saltar.` ,
+                    'Saltador innato':
+                        `Tu capacidad de salto se dobla.` ,
+                    'Atacante aéreo':
+                        `Mientras estés al menos 2 metros por encima de tu objetivo, los ataques se hacen con Ventaja.` ,
                 },
             },
 
@@ -94,10 +134,18 @@ class RaceService{
                 icon: 'libro.png',
                 image: 'corvido.jpeg',
                 abilities: {
-                    'Mimetizar técnica': 'Mimetizas una técnica',
+                    'Mimetizar técnica': 
+                        `Haz una prueba de sabiduría para intentar aprender un hechizo o habilidad del que hayas sido testigo la última hora. 
+                        La dificultad dependerá de la complejidad de la habilidad. Podrás usar la habilidad mimetizada hasta 2 veces (una habilidad a la vez). 
+                        Un uso. Se recarga tras un descanso largo.`,
                 },
                 treats:{
-                    'Erudito': 'Sabés más',
+                    'Erudito':
+                        `Bonificación de +1 en pruebas de sabiduría.` ,
+                    'Mimetizar voz':
+                        `Puede imitar voces y sonidos casi a la perfección.` ,
+                    'Optimización nutricional':
+                        `Tras adquirir Hambruna obtienes un margen de 12 horas antes de recibir sus efectos negativos.` ,
                 },
             },
         }
