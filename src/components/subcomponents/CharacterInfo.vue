@@ -16,41 +16,35 @@ const fields_columns = {
     'Exp': 1
 }
 
-const getCols = (number) => {
-    return 'col-' + number;
-}
-
-let a = 'asadaw';
 </script>
 
 <template>
-    <div class="row justify-content-center w-100 p-0 m-0 mb-2 fs-5">
+    <div class="row justify-content-center align-items-end w-100 p-0 m-0 mb-2 fs-5">
         <div
         v-for="(value, field, index) in props.fields"
         :key="index"
         :class="{
-            ['row m-0 ' + getCols(fields_columns[field])]: true,
+            ['row m-0 align-bottom align-items-end col-' + fields_columns[field]]: true,
             'empty-field': props.fields[field] === ''  
         }"
         >
             <label 
-            class="col-12 h2 m-0 p-0" 
+            class="col-12 h2 m-0 p-0 align-bottom" 
             :for="field"
             >
                 {{ field }}
             </label>
-            <input v-model="props.fields[field]" class="col-12 m-0 p-0 fs-4" :id="field" type="text">
+            <input v-model="props.fields[field]" class="col-12 m-0 p-0 fs-5 align-bottom" :id="field" type="text">
         </div>
     </div>
 </template>
 
 <style scoped lang="scss">
 input {
-    padding: 0; 
-    margin: 0; 
     border: none; 
     border-bottom: 2px black solid;
     color: $font-color;
+    height:20px;
     outline: none; 
     background: transparent; 
 }
@@ -61,7 +55,7 @@ label{
 
 .empty-field{
     label{
-        transform:translateY(100%);
+        transform:translateY(55%);
     }
 }
 

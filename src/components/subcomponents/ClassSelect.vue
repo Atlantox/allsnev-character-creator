@@ -24,20 +24,21 @@ const resetTalents = () => {
     emit ('resetTalents')
 }
 
+const selectclass = 'w-100 fs-5 rol-select align-bottom'
+const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-start align-bottom'
 </script>
 
 <template>
-    <div class="class-container col-12 row justify-content-start align-items-start m-0 p-0 text-center border border-2 border-black rol-subwindow">
-        <div class="row col-12 m-0 p-0">
-            <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start">
-                <h2 class="">
+    <div class="class-container col-12 row justify-content-start align-items-start m-0 p-0 text-center border border-2 border-black rol-subwindow align-bottom">
+        <div class="row col-12 m-0 p-0 fs-4 justify-content-start">
+            <div :class="selectContainerClass">
+                <h2>
                     Clase
                 </h2>
                 <select 
-                class="w-100 fs-3 rol-select" 
+                :class="selectclass" 
                 v-model="props.currentClass.mainClass" 
                 name="classSelect" 
-                id=""
                 @change="changeClass"
                 >
                     <template
@@ -58,16 +59,15 @@ const resetTalents = () => {
             >
                 <div 
                 v-if="props.classes[props.currentClass.mainClass].subClasses !== false"
-                class="col-12 p-3 pb-4 d-flex flex-column align-items-start"
+                :class="selectContainerClass"
                 >
                     <h2 class="">
                         Sub clase
                     </h2>
                     <select 
-                    class="w-100 fs-3 rol-select" 
+                    :class="selectclass" 
                     v-model="props.currentClass.subClass" 
                     name="subClassSelect" 
-                    id=""
                     @change="resetTalents"
                     >
                         <template
@@ -87,15 +87,14 @@ const resetTalents = () => {
             <template 
             v-if="props.currentClass.mainClass === 'Clérigo'"
             >
-                <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start">
+                <div :class="selectContainerClass">
                     <h2 class="">
                         Tu Adorado
                     </h2>
                     <select 
-                    class="w-100 fs-3 rol-select" 
+                    :class="selectclass" 
                     v-model="props.currentClass.god" 
                     name="godSelect" 
-                    id=""
                     @change="resetTalents"
                     >
                         <template
@@ -118,11 +117,11 @@ const resetTalents = () => {
             <template 
             v-if="['Clérigo', 'Hechicero'].includes(props.currentClass.mainClass)"
             >
-                <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start">
+                <div class="col-12 p-3 pb-4 d-flex flex-column align-items-start align-bottom">
                     <h2 class="">
                         Nivel de clase
                     </h2>
-                    <input class="w-25 text-center rol-input fs-3" type="text">
+                    <input class="w-25 fs-5 text-center rol-input align-bottom" type="text">
                 </div>
             </template>
         </div>
@@ -133,5 +132,11 @@ const resetTalents = () => {
 
 input, select, option{
     color:$font-color;
+    text-shadow: 0 0 2px black !important;
+}
+
+select{
+    height:35px;
+    padding-top:6px;
 }
 </style>

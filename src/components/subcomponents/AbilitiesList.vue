@@ -29,7 +29,7 @@ const props = defineProps({
 
 const thClass = 'h4'
 const descriptionClass = 'fs-6 p-1'
-const talentNameClass = 'h4'
+const talentNameClass = 'h5'
 
 const emit = defineEmits(['deleteTalent', 'addCustomAbility', 'addCustomTreat']);
 

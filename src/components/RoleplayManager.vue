@@ -119,14 +119,16 @@ const toggleNegativeEffect = (effect) => {
             current_character.value.negativeEffects.splice(index, 1);
 
         for(const key in effect.debuffs){
-            current_character.value.statistics[key].current -= effect.debuffs[key];
+            current_character.value.statistics[key].current = 
+                parseInt(current_character.value.statistics[key].current) - effect.debuffs[key];
         }
     }
     else{
         current_character.value.negativeEffects.push(effect.name);
         // Else apply the negative affects
         for(const key in effect.debuffs){
-            current_character.value.statistics[key].current += effect.debuffs[key];
+            current_character.value.statistics[key].current = 
+                parseInt(current_character.value.statistics[key].current) + effect.debuffs[key];
         }
     }
 }
@@ -310,11 +312,11 @@ resetTalents();
                 <h1 class="col-8 p-0 main-title text-center">
                     Creador de Personajes de Allsnev
                 </h1>
-                <div class="col-4 row m-0 p-2 pe-5 justify-content-end align-items-end flex-column no-print">
-                    <h4 class="col-6 m-0 p-0 text-right">
+                <div class="col-4 row m-0 p-2 pe-5 justify-content-center align-items-center flex-column no-print">
+                    <h4 class="col-12 m-0 p-0 text-center">
                         Personajes creados
                     </h4>
-                    <select class="col-6 fs-4 rol-select" @change="changeCurrentCharacter">
+                    <select class="col-8 fs-5 rol-select" @change="changeCurrentCharacter">
                         <option value="-1">Nuevo personaje</option>
                         <option 
                         v-for="(character, index) in characters"
@@ -334,8 +336,8 @@ resetTalents();
             </section>
 
             <section class="row w-100 m-0 p-0 justify-content-around ">
-                <div class="row p-0 justify-content-center col-3">
-                    <div class="row p-0 justify-content-center col-12">
+                <div class="row p-0 justify-content-center col-4">
+                    <div class="row p-0 justify-content-center col-11">
                         <RaceSelect 
                         :currentRace=current_character.race
                         :races=races
@@ -428,7 +430,9 @@ resetTalents();
     text-shadow: 0 0 2px $primary-light;
 }
 
-
+select{
+    color:$font-color;
+}
 .rol-container{
     background-color:$secondary;
     border:2px black solid;

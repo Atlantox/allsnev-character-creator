@@ -60,7 +60,7 @@ const statisticTdClass = 'text-center align-bottom'
 <template>
     <div class="row w-100 m-0 p-0 justify-content-center">
         <div class="col-12 m-0 p-0 mb-2">
-            <h4 @click="generateStatistics" class="my-button rol-button col-5 p-1 text-center">
+            <h4 @click="generateStatistics" class="my-button rol-button col-6 p-1 text-center">
                 Generar estadísticas
             </h4>
         </div>

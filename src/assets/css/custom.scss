@@ -9,7 +9,7 @@ body {
     background-color: $primary;
     color: $font-color !important;
     font-variant:small-caps;
-    text-shadow: 0 0 2px black;
+    text-shadow: 0 0 2px black !important;
 }
 
 input, select{

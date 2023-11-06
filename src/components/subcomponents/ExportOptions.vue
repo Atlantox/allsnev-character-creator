@@ -32,9 +32,9 @@ const importCharacters = (event) => {
 </script>
 
 <template>
-    <div class="row col-12 m-0 p-0 my-1 mb-3">
+    <div class="row col-12 m-0 p-0 my-1 mb-4">
         <div class="row w-100 m-0 p-0 align-items-center justify-content-center">
-            <div class="col-3 rol-button py-2" @click="saveCurrentCharacter">
+            <div class="col-3 rol-button p-1" @click="saveCurrentCharacter">
                 <h2 class="m-0 p-0">
                     Guardar personaje
                 </h2>
@@ -42,44 +42,46 @@ const importCharacters = (event) => {
         </div>
     </div>
         
-    <div class="row col-5 m-0 p-1">
-        <div class="row w-100 m-0 p-0 align-items-center justify-content-center rol-subwindow border border-2 border-black">
-            <h1 class="col-12 m-0 p-0">
-                Exportar
-            </h1>
-            <div class="col-12 row justify-content-around align-items-center fs-4">
-                <div class="col-5 py-1">
-                    <div class="rol-button" @click="exportCharacter('pdf')">
-                        Exportar como PDF
+    <div class="row col-12 m-0 p-0 align-items-start justify-content-around">
+        <div class="row col-6 m-0 p-0 align-items-start">
+            <div class="row w-100 m-0 p-0 align-items-start justify-content-center rol-subwindow border border-2 border-black p-1">
+                <h2 class="col-12 m-0 p-0">
+                    Exportar
+                </h2>
+                <div class="col-12 row justify-content-around align-items-center fs-5">
+                    <div class="col-5 py-1">
+                        <div class="rol-button" @click="exportCharacter('pdf')">
+                            Exportar como PDF
+                        </div>
                     </div>
-                </div>
-                <div class="col-5 py-1">
-                    <div class="rol-button" @click="exportCharacter('img')">
-                        Exportar como Imagen
+                    <div class="col-5 py-1">
+                        <div class="rol-button" @click="exportCharacter('img')">
+                            Exportar como Imagen
+                        </div>
                     </div>
-                </div>
-                <div class="col-5 py-1">
-                    <div class="rol-button" @click="exportCharacter('json')">
-                        Exportar como JSON
+                    <div class="col-5 py-1">
+                        <div class="rol-button" @click="exportCharacter('json')">
+                            Exportar como JSON
+                        </div>
                     </div>
-                </div>
-                <div class="col-5 py-1">
-                    <div class="rol-button p-1" @click="exportAllCharacters">
-                        Exportar todos los personajes como JSON
+                    <div class="col-5 py-1">
+                        <div class="rol-button p-1" @click="exportAllCharacters">
+                            Exportar todos los personajes como JSON
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="row col-5 m-0 p-1">
-        <div class="row w-100 m-0 p-0 align-items-center justify-content-center rol-subwindow border border-2 border-black my-2 p-2">
-            <h1 class="col-12 m-0 p-0">
-                Importar personajes (Archivo .json)
-            </h1>
-            <div class="col-12 row justify-content-around align-items-center fs-4">
-                <div class="col-12 p-2">
-                    <input class="rol-button" @change="importCharacters" type="file" accept=".json">
+    
+        <div class="row col-6 m-0 align-items-start">
+            <div class="row w-100 m-0 p-0 align-items-start justify-content-center rol-subwindow border border-2 border-black p-1">
+                <h2 class="col-12 m-0 p-0">
+                    Importar personajes (Archivo .json)
+                </h2>
+                <div class="col-12 row justify-content-around align-items-center fs-5">
+                    <div class="col-12 p-2">
+                        <input class="w-75 rol-button" @change="importCharacters" type="file" accept=".json">
+                    </div>
                 </div>
             </div>
         </div>

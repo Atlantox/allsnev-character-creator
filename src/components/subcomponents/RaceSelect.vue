@@ -32,7 +32,7 @@ const changeRace = (index) => {
         </figure>
         <ul class="col-11 d-flex list-unstyled flex-wrap align-items-center justify-content-around m-0">
             <li
-            class="col-3 p-2 m-0"
+            class="col-3 p-1 m-0"
             v-for="(value, race, index) in props.races"
             :key="index"
             >
