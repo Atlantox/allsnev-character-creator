@@ -314,7 +314,7 @@ talentsInfo.value = allTalents.value
                 <div class="col-12 row justify-content-center align-items-start p-2">
                     <AbilitiesList 
                     :talents=current_character.talents
-                    :allTalents="talentsInfo"
+                    :allTalents="getTalents()"
                     />
                 </div>
 
