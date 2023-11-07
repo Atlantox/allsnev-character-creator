@@ -34,7 +34,7 @@ const importCharacters = (event) => {
 <template>
     <div class="row col-12 m-0 p-0 my-1 mb-4">
         <div class="row w-100 m-0 p-0 align-items-center justify-content-center">
-            <div class="col-3 rol-button p-1" @click="saveCurrentCharacter">
+            <div class="col-8 col-md-3 rol-button p-1" @click="saveCurrentCharacter">
                 <h2 class="m-0 p-0">
                     Guardar personaje
                 </h2>
@@ -42,8 +42,8 @@ const importCharacters = (event) => {
         </div>
     </div>
         
-    <div class="row col-12 m-0 p-0 align-items-start justify-content-around">
-        <div class="row col-6 m-0 p-0 align-items-start">
+    <div class="row col-12 m-0 p-0 align-items-start justify-content-around flex-column flex-md-row">
+        <div class="row col-12 col-md-6 m-0 p-0 align-items-start mb-4 mb-md-0">
             <div class="row w-100 m-0 p-0 align-items-start justify-content-center rol-subwindow border border-2 border-black p-1">
                 <h2 class="col-12 m-0 p-0">
                     Exportar
@@ -73,7 +73,7 @@ const importCharacters = (event) => {
             </div>
         </div>
     
-        <div class="row col-6 m-0 align-items-start">
+        <div class="row col-12 col-md-6 m-0 align-items-start">
             <div class="row w-100 m-0 p-0 align-items-start justify-content-center rol-subwindow border border-2 border-black p-1">
                 <h2 class="col-12 m-0 p-0">
                     Importar personajes (Archivo .json)

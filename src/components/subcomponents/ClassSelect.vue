@@ -38,7 +38,6 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                 <select 
                 :class="selectclass" 
                 v-model="props.currentClass.mainClass" 
-                name="classSelect" 
                 @change="changeClass"
                 >
                     <template
@@ -61,13 +60,12 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                 v-if="props.classes[props.currentClass.mainClass].subClasses !== false"
                 :class="selectContainerClass"
                 >
-                    <h2 class="">
+                    <h2>
                         Sub clase
                     </h2>
                     <select 
                     :class="selectclass" 
                     v-model="props.currentClass.subClass" 
-                    name="subClassSelect" 
                     @change="resetTalents"
                     >
                         <template
@@ -88,13 +86,12 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
             v-if="props.currentClass.mainClass === 'Clérigo'"
             >
                 <div :class="selectContainerClass">
-                    <h2 class="">
+                    <h2>
                         Tu Adorado
                     </h2>
                     <select 
                     :class="selectclass" 
                     v-model="props.currentClass.god" 
-                    name="godSelect" 
                     @change="resetTalents"
                     >
                         <template

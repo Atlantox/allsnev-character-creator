@@ -1,27 +1,11 @@
 <script setup>
 import { ref } from 'vue'
 const props = defineProps({
-    classInfo:{
-        type: Object,
-        required: true,
-    },
     talents:{
         type: Object,
         required: true
     },
-    races: {
-        type: Object,
-        required: true
-    },
-    currentRace: {
-        type: String,
-        required: true
-    },
-    classes: {
-        type: Object,
-        required: true
-    },
-    gods: {
+    allTalents:{
         type: Object,
         required: true
     },
@@ -31,41 +15,47 @@ const thClass = 'h4'
 const descriptionClass = 'fs-6 p-1'
 const talentNameClass = 'h5'
 
-const emit = defineEmits(['deleteTalent', 'addCustomAbility', 'addCustomTreat']);
-
-const deleteTalent = (talent) => {
-    emit ('deleteTalent', talent);
+const deleteTalent = (target_talent) => {    
+    delete props.talents.abilities[target_talent];
+    delete props.talents.treats[target_talent];
 }
 
-const customAbility = ref({ name:'', description:'' })
-const customTreat = ref({ name:'', description:'' })
-const existantAbility = ref({ name:'', description:'' })
-const existantTreat = ref({ name:'', description:'' })
+const customTalent = ref({
+    ability:{name: '', description: ''},
+    treat:{name: '', description: ''},
+})
 
+const existantTalent = ref({
+    ability:{name: '', description: ''},
+    treat:{name: '', description: ''},
+})
 
-const addCustomAbility = () => {
-    emit ('addCustomAbility', customAbility.value)
-    customAbility.value = {name: '', description: ''}
+const addCustomTalent = (talentType) => {
+    if(talentType === 'ability'){
+        props.talents.abilities[customTalent.value.ability.name] = customTalent.value.ability.description;
+        customTalent.value.ability = {name: '', description: ''}
+    }
+    else if(talentType === 'treat'){
+        props.talents.treats[customTalent.value.treat.name] = customTalent.value.treat.description;
+        customTalent.value.treat = {name: '', description: ''}
+    }
 }
 
-const addCustomTreat = () => {
-    emit ('addCustomTreat', customTreat.value)
-    customTreat.value = {name: '', description: ''}
+const addExistingTalent = (talentType) => {
+    if(talentType === 'ability'){
+        props.talents.abilities[existantTalent.value.ability.name] = existantTalent.value.ability.description;
+        existantTalent.value.ability = {name: '', description: ''}
+    }
+    else if(talentType === 'treat'){
+        props.talents.treats[existantTalent.value.treat.name] = existantTalent.value.treat.description;
+        existantTalent.value.treat = {name: '', description: ''}
+    }
 }
 
-const addExistantAbility = () => {
-    emit ('addCustomAbility', existantAbility.value)
-    existantAbility.value = {name: '', description: ''}
-}
-
-const addExistantTreat = () => {
-    emit ('addCustomTreat', existantTreat.value)
-    existantTreat.value = {name: '', description: ''}
-}
 </script>
 
 <template>
-    <section class="col-6 row p-0 pe-4">
+    <section class="col-12 col-md-6 row p-0 pe-0 pe-md-4 mb-5 mb-md-0">
         <table class="col-12 rol-subwindow">
             <thead>
                 <tr>
@@ -98,17 +88,17 @@ const addExistantTreat = () => {
                 <tr class="no-print">
                     <td>
                         <div class="w-100 p-1">
-                            <textarea class="w-100 fs-5" v-model="customAbility.name" cols="30" rows="3" placeholder="Nombre de habilidad personalizada"></textarea>
+                            <textarea class="w-100 fs-5" v-model="customTalent.ability.name" cols="30" rows="3" placeholder="Nombre de habilidad personalizada"></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="w-100 p-2">
-                            <textarea class="w-100 fs-5" v-model="customAbility.description" cols="30" rows="3" placeholder="Descripción de habilidad personalizada"></textarea>
+                            <textarea class="w-100 fs-5" v-model="customTalent.ability.description" cols="30" rows="3" placeholder="Descripción de habilidad personalizada"></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
-                            <figure @click="addCustomAbility" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
+                            <figure @click="addCustomTalent('ability')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
                                 <img class="w-75 m-0" src="@/assets/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
@@ -122,75 +112,23 @@ const addExistantTreat = () => {
                         </h5>
                         <div class="w-100 p-1 m-0">
                             <select 
-                            v-model="existantAbility"
+                            v-model="existantTalent.ability"
                             class="w-50 fs-5 rol-select" 
-                            name="" 
-                            id="" 
                             >
-                                <!-- For each race ability -->
                                 <option 
-                                v-for="(description, ability, index) in props.races[props.currentRace].abilities"
+                                v-for="(description, ability, index) in props.allTalents.abilities"
                                 :key="index"
                                 :value="{name:ability, description:description}"
                                 :description="description"
                                 >
                                     {{ ability }}
                                 </option>
-
-                                <!-- For each class ability -->
-                                <template
-                                v-if="props.classInfo.mainClass !== ''"
-                                >
-                                    <option 
-                                    v-for="(description, ability, index) in props.classes[props.classInfo.mainClass].abilities"
-                                    :key="index"
-                                    :value="{name:ability, description:description}"
-                                    :description="description"
-                                    >
-                                        {{ ability }}
-                                    </option>
-                                    
-                                    
-                                    <!-- For each subclass ability -->
-                                    <template
-                                    v-if="props.classInfo.subClass !== ''"
-                                    >
-                                        <template
-                                        v-if="props.classes[props.classInfo.mainClass].subClasses !== false"
-                                        >
-                                            <option 
-                                            
-                                            v-for="(description, ability, index) in props.classes[props.classInfo.mainClass].subClasses[props.classInfo.subClass].abilities"
-                                            :key="index"
-                                            :value="{name:ability, description:description}"
-                                            :description="description"
-                                            >
-                                                {{ ability }}
-                                            </option>
-                                        </template>
-                                    </template>
-                                </template>
-
-
-                                <!-- For each god ability -->
-                                <template
-                                v-if="props.classInfo.god !== ''"
-                                >
-                                    <option 
-                                    v-for="(description, ability, index) in props.gods[props.classInfo.god].abilities"
-                                    :key="index"
-                                    :value="{name:ability, description:description}"
-                                    :description="description"
-                                    >
-                                        {{ ability }}
-                                    </option>
-                                </template>
                             </select>   
                         </div>
                     </td>
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
-                            <figure @click="addExistantAbility" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
+                            <figure @click="addExistingTalent('ability')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
                                 <img class="w-75 m-0" src="@/assets/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
@@ -200,7 +138,7 @@ const addExistantTreat = () => {
         </table>
     </section>
 
-    <section class="col-6 row p-0 ps-4">
+    <section class="col-12 col-md-6 row p-0 ps-0 ps-md-4">
         <table class="col-12 rol-subwindow">
             <thead>
                 <tr>
@@ -233,17 +171,17 @@ const addExistantTreat = () => {
                 <tr class="no-print">
                     <td>
                         <div class="w-100 p-1">
-                            <textarea class="w-100 fs-5" v-model="customTreat.name" cols="30" rows="3" placeholder="Nombre de rasgo personalizado"></textarea>
+                            <textarea class="w-100 fs-5" v-model="customTalent.treat.name" cols="30" rows="3" placeholder="Nombre de rasgo personalizado"></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="w-100 p-2">
-                            <textarea class="w-100 fs-5" v-model="customTreat.description" cols="30" rows="3" placeholder="Descripción de rasgo personalizado"></textarea>
+                            <textarea class="w-100 fs-5" v-model="customTalent.treat.description" cols="30" rows="3" placeholder="Descripción de rasgo personalizado"></textarea>
                         </div>
                     </td>
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
-                            <figure @click="addCustomTreat" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
+                            <figure @click="addCustomTalent('treat')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
                                 <img class="w-75 m-0" src="@/assets/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
@@ -257,59 +195,23 @@ const addExistantTreat = () => {
                         </h5>
                         <div class="w-100 p-1 m-0">
                             <select 
-                            v-model="existantTreat"
+                            v-model="existantTalent.treat"
                             class="w-50 fs-5 rol-select" 
                             >
-                                <!-- For each race treat -->
                                 <option 
-                                v-for="(description, ability, index) in props.races[props.currentRace].treats"
+                                v-for="(description, treat, index) in props.allTalents.treats"
                                 :key="index"
-                                :value="{name:ability, description:description}"
+                                :value="{name:treat, description:description}"
                                 :description="description"
                                 >
-                                    {{ ability }}
+                                    {{ treat }}
                                 </option>
-
-                                <!-- For each class treat -->
-                                <template
-                                v-if="props.classInfo.mainClass !== ''"
-                                >
-                                    <option 
-                                    v-for="(description, ability, index) in props.classes[props.classInfo.mainClass].treats"
-                                    :key="index"
-                                    :value="{name:ability, description:description}"
-                                    :description="description"
-                                    >
-                                        {{ ability }}
-                                    </option>
-                                    
-                                    
-                                    <!-- For each subclass treat -->
-                                    <template
-                                    v-if="props.classInfo.subClass !== ''"
-                                    >
-                                        <template
-                                        v-if="props.classes[props.classInfo.mainClass].subClasses !==false"
-                                        >
-                                            <option 
-                                            
-                                            v-for="(description, ability, index) in props.classes[props.classInfo.mainClass].subClasses[props.classInfo.subClass].treats"
-                                            :key="index"
-                                            :value="{name:ability, description:description}"
-                                            :description="description"
-                                            >
-                                                {{ ability }}
-                                            </option>
-                                        </template>
-                                    </template>
-                                </template>
-
                             </select>   
                         </div>
                     </td>
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
-                            <figure @click="addExistantTreat" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
+                            <figure @click="addExistingTalent('treat')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
                                 <img class="w-75 m-0" src="@/assets/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>

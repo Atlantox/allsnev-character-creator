@@ -20,7 +20,7 @@ const changeRace = (index) => {
 
 <template>
     <div class="col-12 row justify-content-center p-0 m-0 py-2 text-center border border-2 border-black rol-subwindow">
-        <figure class="col-12 d-flex flex-column align-items-center justify-content-center m-0">
+        <figure class="col-9 col-md-12 d-flex flex-column align-items-center justify-content-center m-0 p-4 p-md-3">
             <img 
             class="w-100 border border-2 border-black"  
             :src="'src/assets/images/races/' + props.races[currentRace].image" 
@@ -28,18 +28,18 @@ const changeRace = (index) => {
             <h1 class="m-0">
                 {{ currentRace }}
             </h1>
-            
         </figure>
-        <ul class="col-11 d-flex list-unstyled flex-wrap align-items-center justify-content-around m-0">
+
+        <ul class="col-3 col-md-11 row list-unstyled flex-wrap align-items-center justify-content-center justify-content-md-around m-0 p-0">
             <li
-            class="col-3 p-1 m-0"
+            class="col-6 col-md-3 p-0 p-md-2 m-0"
             v-for="(value, race, index) in props.races"
             :key="index"
             >
                 <button 
                 @click="changeRace(race)"
                 :class="{
-                    'w-75 p-2 m-0 d-flex align-items-center mx-2 rol-button border border-black': true,
+                    'w-75 p-2 m-0 d-flex align-items-center rol-button border border-black': true,
                     'rol-button-active': race === props.currentRace
                 }"
                 >
@@ -51,6 +51,12 @@ const changeRace = (index) => {
 </template>
 
 <style scoped lang="scss">
+
+@media screen and (max-width: 768px) {
+  h1 {
+    font-size:60px;
+  }
+}
 
 *{
     color:$font-color;

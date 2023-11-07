@@ -1,6 +1,6 @@
 <script setup>
 // Modules
-import { ref, computed } from 'vue';
+import { ref, computed, getCurrentInstance } from 'vue';
 
 // Components
 import CharacterInfo from './subcomponents/CharacterInfo.vue';
@@ -28,12 +28,15 @@ const classes = classService.getClasses();
 const gods = godService.getGods();
 
 // Ref variables
-const characters = ref([]);
-const current_character = ref({});
-const currentCharacterIndex = ref('-1');
+const characters = ref([])
+const current_character = ref({})
+const currentCharacterIndex = ref('-1')
+const allTalents = ref({})
+const talentsInfo = ref({})
+
 
 // Computed functions
-const getTalents = computed(() => {
+const getTalents = () => {
     const currentRace = current_character.value.race;
     const currentClass = current_character.value.classInfo;
 
@@ -80,7 +83,7 @@ const getTalents = computed(() => {
         abilities: totalAbilities,
         treats: totalTreats
     };
-});
+};
 
 
 // Emits 
@@ -97,60 +100,9 @@ const changeClass = () => {
 }
 
 const resetTalents = () => {
+    allTalents.value = getTalents();
+    talentsInfo.value = allTalents.value;
     current_character.value.talents = talentsInfo.value;
-}
-
-const deleteTalent = (target_talent) => {
-    let my_talents = {
-        abilities: current_character.value.talents.abilities,
-        treats: current_character.value.talents.treats,
-    };
-    
-    delete my_talents.abilities[target_talent];
-    delete my_talents.treats[target_talent];
-    current_character.value.talents = my_talents;
-}
-
-const toggleNegativeEffect = (effect) => {
-    if(current_character.value.negativeEffects.includes(effect.name)){        
-        // If already has the negative effect, remove it
-        var index = current_character.value.negativeEffects.indexOf(effect.name);
-        if (index !== -1)
-            current_character.value.negativeEffects.splice(index, 1);
-
-        for(const key in effect.debuffs){
-            current_character.value.statistics[key].current = 
-                parseInt(current_character.value.statistics[key].current) - effect.debuffs[key];
-        }
-    }
-    else{
-        current_character.value.negativeEffects.push(effect.name);
-        // Else apply the negative affects
-        for(const key in effect.debuffs){
-            current_character.value.statistics[key].current = 
-                parseInt(current_character.value.statistics[key].current) + effect.debuffs[key];
-        }
-    }
-}
-
-const addCustomAbility = (customAbility) => {
-    current_character.value.talents.abilities[customAbility.name] = customAbility.description;
-}
-
-const addCustomTreat = (customTreat) => {
-    current_character.value.talents.treats[customTreat.name] = customTreat.description;
-}
-
-
-const addInventoryObject = (inventoryObject) => {
-    current_character.value.inventory[inventoryObject.name] = {
-        description: inventoryObject.description,
-        quantity: inventoryObject.quantity
-    }
-}
-
-const deleteInventoryObject = (inventoryObjectName) => {
-    delete current_character.value.inventory[inventoryObjectName];
 }
 
 const exportCharacter = async (exportType) => {    
@@ -249,15 +201,6 @@ const changeCurrentCharacter = (event) => {
 
 
 // Normal functions
-const generateStatistics = () => {
-    let randomNumbers = [];
-    for (var el in current_character.value.statistics) {
-        randomNumbers.push((Math.floor(Math.random() * 10) + 1) + 5); // 1d10 + 5
-    }
-    alert(randomNumbers);
-}
-
-
 const resetCurrentCharacter = () => {
     current_character.value = {
         basic_information:{
@@ -299,24 +242,25 @@ const resetCurrentCharacter = () => {
     }
 }
 
-const talentsInfo = ref(getTalents)
-resetCurrentCharacter();
-resetTalents();
+resetCurrentCharacter()
+resetTalents()
+allTalents.value = getTalents()
+talentsInfo.value = allTalents.value
 </script>
 
 <template>
     <main class="container-fluid p-3"  id="characterSheet" ref="characterSheet">
         <div class="row w-100 m-0 rol-container py-3 flex-wrap">
             <!-- First row -->
-            <section class="row w-100 text-center m-0 p-0 justify-content-around align-items-center">
-                <h1 class="col-8 p-0 main-title text-center">
+            <section class="row w-100 m-0 p-0 justify-content-around align-items-center">
+                <h1 class="col-12 col-md-7 p-0 main-title text-center">
                     Creador de Personajes de Allsnev
                 </h1>
-                <div class="col-4 row m-0 p-2 pe-5 justify-content-center align-items-center flex-column no-print">
+                <div class="col-12 col-md-5 row m-0 p-2 pe-0 justify-content-center align-items-center flex-column no-print">
                     <h4 class="col-12 m-0 p-0 text-center">
                         Personajes creados
                     </h4>
-                    <select class="col-8 fs-5 rol-select" @change="changeCurrentCharacter">
+                    <select class="col-8 col-md-6 fs-5 rol-select" @change="changeCurrentCharacter">
                         <option value="-1">Nuevo personaje</option>
                         <option 
                         v-for="(character, index) in characters"
@@ -335,8 +279,8 @@ resetTalents();
                 />
             </section>
 
-            <section class="row w-100 m-0 p-0 justify-content-around ">
-                <div class="row p-0 justify-content-center col-4">
+            <section class="row w-100 m-0 p-0 justify-content-around flex-wrap flex-column align-items-center align-items-md-start flex-md-row">
+                <div class="row p-0 justify-content-center col-12 col-md-4">
                     <div class="row p-0 justify-content-center col-11">
                         <RaceSelect 
                         :currentRace=current_character.race
@@ -346,18 +290,15 @@ resetTalents();
                     </div>
                 </div>
 
-                <div class="row p-0 justify-content-center col-4">
+                <div class="row p-0 mt-3 mt-md-0 justify-content-center col-10 col-md-4">
                     <Statistics 
                     :statistics=current_character.statistics
                     :negativeEffects=current_character.negativeEffects
-                    :currentRace=current_character.race
                     :currentState=current_character.state
-                    @generateStatistics="generateStatistics"
-                    @toggleNegativeEffect="toggleNegativeEffect"
                     />
                 </div>
 
-                <div class="row p-0 justify-content-center col-2">
+                <div class="row p-0 justify-content-center col-10 col-md-2">
                     <ClassSelect 
                     :classes=classes
                     :currentClass=current_character.classInfo
@@ -372,15 +313,8 @@ resetTalents();
             <section class="row w-100 m-0 p-0 justify-content-around text-center p-3">
                 <div class="col-12 row justify-content-center align-items-start p-2">
                     <AbilitiesList 
-                    :classInfo="current_character.classInfo"
                     :talents=current_character.talents
-                    :races="races"
-                    :classes="classes"
-                    :gods="gods"
-                    :currentRace="current_character.race"
-                    @deleteTalent="deleteTalent"
-                    @addCustomAbility="addCustomAbility"
-                    @addCustomTreat="addCustomTreat"
+                    :allTalents="talentsInfo"
                     />
                 </div>
 
@@ -388,15 +322,13 @@ resetTalents();
             
             <!-- Third row -->
             <section class="row w-100 m-0 p-0 justify-content-around text-center p-3">
-                <div class="col-6 row justify-content-center">
+                <div class="col-12 col-md-6 row justify-content-center mb-5 mb-md-0">
                     <Inventory
                     :characterInventory="current_character.inventory"
-                    @addInventoryObject="addInventoryObject"
-                    @deleteInventoryObject="deleteInventoryObject"
                     />
                 </div>
 
-                <div class="col-6 row justify-content-center">
+                <div class="col-12 col-md-6 row justify-content-center">
                     <CharacterLore 
                     :lore="current_character.lore"
                     />

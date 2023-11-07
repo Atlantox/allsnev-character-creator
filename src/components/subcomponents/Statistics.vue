@@ -1,4 +1,8 @@
 <script setup>
+import NegativeEffectService from '@/services/NegativeEffectService.js';
+const negativeEffectsService = new NegativeEffectService();
+const negativeEffects = negativeEffectsService.getEffects();
+
 const props = defineProps({
     statistics:{
         type: Object,
@@ -11,23 +15,44 @@ const props = defineProps({
     currentState:{
         type: Object,
         required: true
-    },
-    currentRace:{
-        type: String,
-        required: true
     }
 })
 
-const emit = defineEmits(['generateStatistics', 'toggleNegativeEffect']);
 
-const generateStatistics = () =>{
-    emit ('generateStatistics');
+// Randomly generate a random numbers between 6 and 15 for each statistic
+const generateStatistics = () => {
+    let randomNumbers = [];
+    for (var el in props.statistics) {
+        randomNumbers.push((Math.floor(Math.random() * 10) + 1) + 5); // 1d10 + 5
+    }
+    alert(randomNumbers);
 }
 
+
+// Add or remove a negative effect
 const toggleNegativeEffect = (effect) => {
-    emit('toggleNegativeEffect', effect)
+    if(props.negativeEffects.includes(effect.name)){        
+        // If already has the negative effect, remove it
+        var index = props.negativeEffects.indexOf(effect.name);
+        if (index !== -1)
+            props.negativeEffects.splice(index, 1);
+
+        for(const key in effect.debuffs){
+            props.statistics[key].current = 
+                parseInt(props.statistics[key].current) - effect.debuffs[key];
+        }
+    }
+    else{
+        props.negativeEffects.push(effect.name);
+        // Else apply the negative affects
+        for(const key in effect.debuffs){
+            props.statistics[key].current = 
+                parseInt(props.statistics[key].current) + effect.debuffs[key];
+        }
+    }
 }
 
+// Return the statistic dice modifier
 const getModifier = (stat) => {
   const normalStat = 10;
   const diff = stat - normalStat;
@@ -39,19 +64,18 @@ const getModifier = (stat) => {
   else return result;
 }
 
+
+// Return dice modifier color: red for negative, green for positive and white for 0
 const getDiceModifierColor = (value) => {
   if (value > 0) return 'text-success'; 
   else if (value < 0) return 'text-danger';
   else return 'text-white';
 };
 
+
 const selectAll = (targetInput) => {
     document.getElementById(targetInput).select();
 }
-
-import NegativeEffectService from '@/services/NegativeEffectService.js';
-const negativeEffectsService = new NegativeEffectService();
-const negativeEffects = negativeEffectsService.getEffects();
 
 const statisticInputClass = 'text-center w-50 h-50 rol-input align-bottom align-bottom'
 const statisticTdClass = 'text-center align-bottom'
@@ -59,8 +83,8 @@ const statisticTdClass = 'text-center align-bottom'
 
 <template>
     <div class="row w-100 m-0 p-0 justify-content-center">
-        <div class="col-12 m-0 p-0 mb-2">
-            <h4 @click="generateStatistics" class="my-button rol-button col-6 p-1 text-center">
+        <div class="col-12 row mt-2 m-md-0 p-0 mb-2 h-auto align-self-end">
+            <h4 @click="generateStatistics" class="my-button rol-button col-7 col-md-6 p-1 text-center">
                 Generar estadísticas
             </h4>
         </div>
@@ -150,7 +174,7 @@ const statisticTdClass = 'text-center align-bottom'
             <div 
             v-for="effect in negativeEffects"
             :key="effect.name"
-            class="col-2 row m-0 p-0 justify-content-center align-items-center"
+            class="col-3 col-md-2 row m-0 p-1 p-md-0 justify-content-center align-items-center"
             >
                 <figure     
                 @click="toggleNegativeEffect(effect)"

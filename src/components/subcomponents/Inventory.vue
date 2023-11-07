@@ -11,18 +11,20 @@ const thClass = 'h4'
 const descriptionClass = 'fs-6 p-1'
 const talentNameClass = 'h4'
 
-const emit = defineEmits(['addInventoryObject', 'deleteInventoryObject']);
-
 const customItem = ref({name:'', description:'', quantity: ''});
 
 const addInventoryObject = () => {
-    emit ('addInventoryObject', customItem.value);
+    props.characterInventory[customItem.value.name] = {
+        description: customItem.value.description,
+        quantity: customItem.value.quantity
+    }
     customItem.value = {name:'', description:'', quantity: ''};
 }
 
-const deleteInventoryObject = (objectName) => {
-    emit ('deleteInventoryObject', objectName);
+const deleteInventoryObject = (inventoryObjectName) => {
+    delete props.characterInventory[inventoryObjectName];
 }
+
 </script>
 
 <template>

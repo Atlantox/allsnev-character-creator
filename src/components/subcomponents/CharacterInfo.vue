@@ -6,6 +6,7 @@ const props = defineProps({
     }
 })
 
+// Fields with bootstrap col- value
 const fields_columns = {
     'Nombre': 2,
     'Edad': 1,
@@ -19,12 +20,13 @@ const fields_columns = {
 </script>
 
 <template>
-    <div class="row justify-content-center align-items-end w-100 p-0 m-0 mb-2 fs-5">
+    <div class="row justify-content-start justify-content-md-center align-items-start w-100 p-0 m-0 mb-2 fs-5 
+            align-items-md-end flex-wrap">
         <div
         v-for="(value, field, index) in props.fields"
         :key="index"
         :class="{
-            ['row m-0 align-bottom align-items-end col-' + fields_columns[field]]: true,
+            ['row m-0 align-bottom align-items-end col-' + (fields_columns[field] * 3)  + ' justify-content-center col-md-' + fields_columns[field]]: true,
             'empty-field': props.fields[field] === ''  
         }"
         >
