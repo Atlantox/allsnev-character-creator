@@ -1,7 +1,7 @@
 <script setup>
 const props = defineProps({
-    lore:{
-        type: String,
+    character:{
+        type: Object,
         required: true
     }
 })
@@ -18,7 +18,9 @@ const props = defineProps({
             <tr>
                 <td>
                     <div class="w-100 p-1">
-                        <textarea class="w-100 fs-6" v-model="props.lore" cols="30" rows="15" placeholder="Trasfondo del personaje"></textarea>
+                        <p class="w-100 fs-6 d-none" id="character-lore-hidden">{{ props.character.lore }}</p>
+                        
+                        <textarea class="w-100 fs-6" id="character-lore-textarea" v-model="props.character.lore" cols="30" rows="15" placeholder="Trasfondo del personaje"></textarea>
                     </div>
                 </td>
             </tr>

@@ -107,7 +107,11 @@ const resetTalents = () => {
 
 const exportCharacter = async (exportType) => {    
     var elementToExport = document.getElementById('characterSheet');
-
+    const loreTextarea = document.getElementById('character-lore-textarea');
+    const loreParagraph = document.getElementById('character-lore-hidden');
+    loreTextarea.classList.add('d-none');
+    loreParagraph.classList.remove('d-none');
+    
     if(exportType === 'pdf'){
         html2canvas(elementToExport, {
             ignoreElements: element => {
@@ -153,6 +157,8 @@ const exportCharacter = async (exportType) => {
         downloadLink.click();
         URL.revokeObjectURL(url);
     }
+    loreParagraph.classList.add('d-none');
+    loreTextarea.classList.remove('d-none');
 }
 
 const exportAllCharacters = () => {
@@ -218,7 +224,8 @@ const resetCurrentCharacter = () => {
             "Inteligencia": {base:0, current:0},
             "Constitución": {base:0, current:0},
             "Percepción": {base:0, current:0},
-            "Conocimiento": {base:0, current:0},
+            "Carisma": {base:0, current:0},
+            "Sabiduría": {base:0, current:0},
         },
         state:{
             "Vida": {max:0, current:0},
@@ -238,7 +245,7 @@ const resetCurrentCharacter = () => {
             treats: [],
         },
         inventory: {},
-        lore: ''
+        lore: 'uwu lore'
     }
 }
 
@@ -330,7 +337,7 @@ talentsInfo.value = allTalents.value
 
                 <div class="col-12 col-md-6 row justify-content-center">
                     <CharacterLore 
-                    :lore="current_character.lore"
+                    :character="current_character"
                     />
                 </div>
             </section>

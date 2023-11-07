@@ -335,8 +335,8 @@ class ClassService{
                         `Haz una prueba de sabiduría CD18, si ganas podrás comunicarte con tu adorado, que te responderá a una pregunta hablando directamente en tu mente. 24 horas de recarga.
                         Maestría: La prueba de sabiduría se hará con Ventaja.`,
                     'Lanzar milagro': 
-                        `"Lanzas un milagro según tu nivel de clérigo.
-                        Maestría: La maestría de esta habilidad es requerida para lanzar milagros de nivel 5."`,
+                        `Lanzas un milagro según tu nivel de clérigo.
+                        Maestría: La maestría de esta habilidad es requerida para lanzar milagros de nivel 5.`,
                 },
                 treats:{
                     'Dominio divino': 'Dominio en lanzar milagros',

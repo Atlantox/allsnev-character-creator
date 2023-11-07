@@ -118,7 +118,7 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                     <h2 class="">
                         Nivel de clase
                     </h2>
-                    <input class="w-25 fs-5 text-center rol-input align-bottom" type="text">
+                    <input v-model="props.currentClass.classLevel" class="w-25 fs-5 text-center rol-input align-bottom" type="text">
                 </div>
             </template>
         </div>
