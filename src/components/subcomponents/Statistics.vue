@@ -116,7 +116,7 @@ const statisticTdClass = 'text-center align-bottom'
                         @click="selectAll(stat + 'base-input')">
                     </td>
 
-                    <td :class="'text-center modifier ' + getDiceModifierColor(getModifier(props.statistics[stat].base))">
+                    <td :class="'text-center modifier ' + getDiceModifierColor(getModifier(props.statistics[stat].current))">
                         {{ getModifier(props.statistics[stat].current) }}
                     </td>
 
