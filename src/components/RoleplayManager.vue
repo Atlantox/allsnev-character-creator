@@ -245,7 +245,7 @@ const resetCurrentCharacter = () => {
             treats: [],
         },
         inventory: {},
-        lore: 'uwu lore'
+        lore: ''
     }
 }
 
