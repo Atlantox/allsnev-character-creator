@@ -18,7 +18,7 @@ const props = defineProps({
             <tr>
                 <td>
                     <div class="w-100 p-1">
-                        <p class="w-100 fs-6 d-none" id="character-lore-hidden">{{ props.character.lore }}</p>
+                        <p class="w-100 fs-5 d-none" id="character-lore-hidden">{{ props.character.lore }}</p>
                         
                         <textarea class="w-100 fs-6" id="character-lore-textarea" v-model="props.character.lore" cols="30" rows="15" placeholder="Trasfondo del personaje"></textarea>
                     </div>
