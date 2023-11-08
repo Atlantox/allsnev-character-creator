@@ -17,7 +17,9 @@ class NegativeEffectService{
             },
             {
                 name:'madness',
-                debuffs:{}
+                debuffs:{
+                    "Carisma": -2
+                }
             },
         ];
     }
