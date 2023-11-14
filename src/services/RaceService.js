@@ -53,8 +53,8 @@ class RaceService{
                         `Bonificación de +1 en pruebas de inteligencia.`,
                     'Belleza':
                         `Bonificación de +1 en pruebas de carisma ante personas interesadas en tu género.`,
-                    'Robar esencia':
-                        `Después de cada combate recuperas 1 de maná por cada enemigo abatido por ti.` ,
+                    'Saber de naturaleza':
+                        `Bonificación de +1 en pruebas de sabiduría relacionadas con la magia y la naturaleza.` ,
                 },
             },
            

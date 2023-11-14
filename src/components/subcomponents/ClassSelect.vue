@@ -82,34 +82,31 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                 </div>
             </template>
 
-            <template 
-            v-if="props.currentClass.mainClass === 'Clérigo'"
-            >
-                <div :class="selectContainerClass">
-                    <h2>
-                        Tu Adorado
-                    </h2>
-                    <select 
-                    :class="selectclass" 
-                    v-model="props.currentClass.god" 
-                    @change="resetTalents"
-                    >
-                        <template
-                        v-for="(value, god, index) in props.gods"
-                        :key="index"
-                        >    
-                            <option 
-                            :class="{
-                                'text-danger': value.available === false
-                            }"
-                            :value="god"
-                            >
-                                {{ god }}
-                            </option>
-                            </template>
-                    </select>
-                </div>
-            </template>
+            <div :class="selectContainerClass">
+                <h2>
+                    Tu Adorado
+                </h2>
+                <select 
+                :class="selectclass" 
+                v-model="props.currentClass.god" 
+                @change="resetTalents"
+                >
+                    <option value="">Ninguno</option>
+                    <template
+                    v-for="(value, god, index) in props.gods"
+                    :key="index"
+                    >    
+                        <option 
+                        :class="{
+                            'text-danger': value.available === false
+                        }"
+                        :value="god"
+                        >
+                            {{ god }}
+                        </option>
+                        </template>
+                </select>
+            </div>
 
             <template 
             v-if="['Clérigo', 'Hechicero'].includes(props.currentClass.mainClass)"

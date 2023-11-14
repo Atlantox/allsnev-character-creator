@@ -4,61 +4,64 @@ class ClassService{
             'Guerrero': {
                 abilities: {
                     'Golpe fuerte': 
-                        `Tu siguiente golpe hará 1d4 de daño extra al impactar pero tendrá una desmejora de -2 a la precisión.
-                        Maestría: El daño aumenta a 1d6.`,
-                    'Sobreesfuerzo físico': 
-                        `Si estás fuera de combate y acabas de perder una prueba de fuerza, tendrás un intento extra. Al terminar, 
-                        las extremidades que hayas utilizado para la acción, quedarán inhabilitadas por 5 minutos por sobreesfuerzo.
-                        Maestría: La inhabilitación solo se dará si fallas la prueba.`,
+                        `Realizas un potente golpe que inflige 1d5 de daño adicional. 2 usos por combate.
+                        Maestría: El golpe obtiene una bonificacion de +1 a la precisión.`,
+                    'Superar límites': 
+                        `Si estás fuera de combate y acabas de perder una prueba de fuerza, puedes usar esta habilidad para superar la prueba al costo de que las extremidades que hayas utilizado para la acción, queden inhabilitadas por 3 minutos por sobreesfuerzo.
+                        Maestría: Al terminar la acción haz una Prueba de salvación (constitución) CD10 para evitar el sobreesfuerzo.`,
                     'Sed de violencia': 
-                        `Enloqueces por los siguientes 3 turnos, atacando a objetivos al azar e infligiendo 1d4 de daño adicional. Requiere nivel 8.
+                        `Enloqueces por los siguientes 3 turnos, atacando a objetivos al azar infligiendo 2d3 de daño adicional y con posibilidad de usar habilidades. Requiere 3 puntos de habilidad.
                         Maestría: Si atacas a un aliado, lo atacarás con Desventaja.`,
                     'Golpe temerario': 
-                        `Realizas un poderoso y temerario ataque que reduce la durabilidad del arma usada para infligir un dado extra 
-                        del daño del arma. Si el ataque falla quedas expuesto, haciendo que el siguiente ataque hacia ti sea con Ventaja. Requiere nivel 12.
-                        Maestría: Si fallas, lanza una moneda, si ganas, evitarás quedarte expuesto.`,
+                        `Realizas un poderoso y temerario ataque que reduce la durabilidad del arma usada para infligir un dado extra del daño del arma. Se puede combinar con otras habilidades. Requiere 3 puntos de habilidad.
+                        Maestría: Lanza una moneda, si ganas, el arma no verá reducida su durabilidad.`,
                 },
                 treats:{
-                    'Dominio del guerrero': 'Dominio en tipo de armas cuerpo a cuerpo y herramientas de fuerza y lanzamiento de objetos pesados.',
-                    'Torpeza mágica': 'No pueden aprender ni lanzar hechizos.',
-                    'Torpeza divina': 'No pueden aprender ni lanzar milagros.',
-                    'Torpeza manual': ' Desventaja al usar armas o herramientas de destreza.'
+                    'Dominio del guerrero': 
+                        `Domina todo tipo de armas cuerpo a cuerpo y herramientas de fuerza.`,
+                    'Torpeza manual': 
+                        `Desventaja al usar armas o herramientas de destreza.`,
                 },
                 subClasses: {
                     'Bárbaro': {
                         abilities: {
                             'Fuerza barbárica': 
-                                `Durante 10 minutos o hasta el final del combate ganas la capacidad de empuñar armas de dos manos en 
-                                cada mano con una desmejora de -2 a la precisión. Requiere nivel 16.
-                                Maestría: La desmejora pasa a ser de -1.`,
+                                `Pasiva. Podrás usar armas de dos manos en cada mano con una desmejora de -1 a la precisión. Requiere 5 puntos de habilidad.
+                                Maestría: Ya no sufrirás la desmejora de precisión.`
                         },
                         treats: {
-                            'Dominio bárbaro': 
-                                `Al no llevar armadura equipada su armadura es igual a su modificador de constitución -1. 
-                                Desventaja en pruebas de inteligencia. Desventaja en pruebas de ataque al llevar armadura puesta.`
+                            'Torpeza sobrenatural': 
+                                `No puede aprender ni lanzar hechizos o milagros.`,
+                            'Armadura bárbara': 
+                                `Al no llevar armadura, la armadura será igual a su modificador de fuerza -1`,
+                            'Incomodidad con armaduras': 
+                                `Desventaja en pruebas de ataque al usar armadura`,
                         },
                     },
-                    'Mixto':{
+                    'Mixto': {
                         abilities: false,
                         treats: {
-                            'Hechicero principiante': 'Puedes aprender y usar los hechizos de nivel 1 de una escuela de magia',
-                            'Habilidoso principiante': 'Puedes usar armas y herramientas de destreza con normalidad',
-                        }
-                    }
+                            'Aprendiz hechicero': 
+                                `Puede aprender los hechizos de nivel 1 de cualquier escuela de magia.`,
+                            'Aprendiz manual': 
+                                `Puede usar armas y herramientas de destreza con normalidad.`,
+                        },
+                    },
                 },
             },
 
             'Hechicero': {
                 abilities: {
-                    'Proyectil mágico (3)':
-                        `Disparas un proyectil de magia pura que inflige 1d4 de daño mágico con un Alcance hábil de 10 metros.
-                        Maestría: El daño aumenta a 1d6`,
+                    'Proyectil de magia pura':
+                        `Disparas un proyectil de magia pura con Alcance hábil de 10 metros que inflige 2 x el maná que inviertas en el hechizo de daño sobrenatural. Coste mínimo: 1.
+                        Maestría: Si inviertes 2 o más de maná, se te será devuelto 1.`,
+                    'Afinidad mágica (No religioso)':
+                        `Pasiva. Al terminar cada combate, recuperas 1 de maná por cada enemigo abatido.
+                        Maestría: La recuperación pasa a ser de 2.`,
                 },
                 treats:{
                     'Dominio del hechicero': `Domina la magia y uso de báculos.`,
-                    'Torpeza divina': 'No pueden aprender ni lanzar milagros.',
-                    'Torpeza musculosa': 'Desventaja en pruebas de fuerza.',
-                    'Dependencia a los báculos': `Desventaja en lanzar hechizos sin un báculo.`,
+                    'Dependencia a los báculos': `Desventaja en pruebas de ataque que no involucren un báculo.`,
                 },
                 subClasses: { 
                     'Elementalista': {
@@ -223,108 +226,110 @@ class ClassService{
 
             'Cazador': {
                 abilities: {
-                    'Oportunidad riesgosa': 
-                        `Tu siguiente ataque se hará con Crítico aumentado en 1. Si falla, el siguiente ataque del objetivo también tendrá Crítico aumentado en 1.
-                        Maestría: Obtienes una bonificacion de +1 en precisión.`,
-                    'Retroceso apresurado': 
-                        `Atacas a un objetivo dentro de tu alcance cuerpo a cuerpo y te alejas de él durante 3 segundos según tu velocidad de carrera evitando así Ataques de oportunidad. Si fallas, 
-                        el siguiente ataque hacia ti será con Ventaja. Requiere nivel 4.
-                        Maestría: Tu ataque tendrá posibilidad de infligir Aturdimiento.`,
                     'Disparo lejano': 
-                        `Aumentas el Alcance hábil de tu siguiente disparo en 50%. Si fallas, el Alcance hábil de tu siguiente disparo disminuye en 50%. Requiere nivel 8.
-                        Maestría: La disminución del Alcance hábil por fallo pasa a ser del 20%.`,
+                        `Aumentas el Alcance hábil de tu siguiente disparo en 50%. Dos usos por combate.
+                        Maestría: La penalización por atacar más allá del Alcance hábil de tu siguiente disparo se elimina.`,
                     'Planificar disparo': 
-                        `Tu siguiente disparo acertará. Perderás tu siguiente turno. Requiere nivel 12.
-                        Maestría: Haz una prueba de destreza CD15 si ganas, evitarás perder tu siguiente turno.`,
-                    'Disparo certero': 
-                        `Tu siguiente disparo será crítico, aunque el acierto no está garantizado. El siguiente ataque que recibas se hará con Ventaja. Requiere nivel 16.
-                        Maestría: Obtienes una bonificación de +1 a la precisión.`,
+                        `Tu siguiente disparo acertará. Perderás tu siguiente turno. Requiere 3 puntos de habilidad.
+                        Maestría: Haz una Prueba de salvación (destreza) CD10 para evitar perder tu siguiente turno.`,
+                    'Retroceso intrépido': 
+                        `Golpeas a un objetivo dentro de tu alcance cuerpo a cuerpo y te alejas de él según tu velocidad de carrera evitando ataques de oportunidad. Requiere 3 puntos de habilidad.
+                        Maestría: El objetivo hace una Prueba de salvación (constitución) CD10 para evitar sufrir Aturdimiento.`,
+                    'Ojo de cazador (No religioso)': 
+                        `Pasiva. El primer disparo que aciertes en cada combate siempre hará daño máximo.
+                        Maestría: Además tendrá Crítico aumentado en 1.`,
                 },
                 treats:{
-                    'Dominio del cazador': 'Dominio de las armas de a distancia y herramientas de destreza',
-                    'Torpeza del cazador': 'Desventaja con armas y herramientas de fuerza'
+                    'Dominio del cazador': 
+                        `Domina todo tipo de armas a distancia.`,
+                    'Torpeza física': 
+                        `Desventaja al usar armas y herramientas de fuerza.`,
                 },
                 subClasses: {
                     'Explorador': {
                         abilities: false,
                         treats: {
-                            'Rastreador innato' : 'Ventaja en pruebas relacionadas con seguir rastros y escalar.',
+                            'Dominio del explorador': 
+                                `Ventaja en pruebas relacionadas con escalar y seguir rastros.`,
                         },
                     },
-                    'Tirador':{
+                    'Cazador': {
                         abilities: false,
                         treats: {
-                            'Dominio de tirador': 'Bonificación de +1 en pruebas de ataques a distancia. ',
-                        }
-                    }
+                            'Dominio del cazador': 
+                                `Bonificación de +1 en pruebas de ataque a distancia.`,
+                        },
+                    },
                 },
             },
 
             'Pícaro': {
                 abilities: {
-                    'Oportunidad riesgosa': 
-                        `Tu siguiente ataque se hará con Crítico aumentado en 1. Si falla, el siguiente ataque del objetivo también tendrá Crítico aumentado en 1.
-                        Maestría: Obtienes una bonificacion de +1 en precisión.`,
-                    'Esperar oportunidad': 
-                        `Pierdes tu turno. Hasta tu siguiente turno cada vez que recibas un ataque haz una prueba de destreza CD12, si ganas esquivarás el ataque. Requiere nivel 4.
-                        Maestría: Si esquivas un ataque de esta manera, haz una prueba de destreza CD10, si ganas realizarás un contraataque.`,
-                    'Encontrar debilidad': 
-                        `Tu siguiente ataque se hará con Crítico aumentado en 2 y se hará con Desventaja. Requiere nivel 8.
-                        Maestría: El Crítico aumentado será de 3.`,
-                    'Maestro de los críticos': 
-                        `Hasta el final del combate, todas tus tiradas de ataque tendrán Crítico aumentado en 1. Un uso. Se recarga tras un descanso largo. Requiere nivel 16.
-                        Maestría: Los usos aumentan a 2.`,
+                    'Ojo de pícaro': 
+                        `Pasiva. Tus ataques tienen Crítico aumentado en 1.
+                        Maestría: Una vez por combate, si sacas un 17 natural o más en una tirada de ataque, puedes hacer que sea crítico.`,
+                    'Oportunidad del error': 
+                        `Si fallas una prueba de ataque, puedes usar esta habilidad para hacer otro intento. Un uso por combate. Requiere 3 puntos de habilidad.
+                        Maestría: Los usos por combante aumentan a 3.`,
+                    'Impacto certero': 
+                        `Tu siguiente ataque será crítico asegurado pero su acierto no está garantizado. Un uso por combate. Requiere 3 puntos de habilidad.
+                        Maestría: El ataque tendrá una precisión de +2.`,
+                    'Golpe fatal (No religioso)': 
+                        `Realizas un Ataque furtivo, si aciertas, el resultado del daño final se dobla. Requiere 4 puntos de habilidad.
+                        Maestría: El cálculo del daño final pasa a ser de x 2.5.`,
                 },
                 treats:{
-                    'Dominio de pícaro': `Domina todo tipo de armas cuerpo a cuerpo y herramientas de destreza.`,
-                    'Torpeza del pícaro': `Desventaja en pruebas de constitución.`,
+                    'Dominio del pícaro': 
+                        `Domina el uso de armas y herramientas de destreza.`,
+                    'Debilucho': 
+                        `Desventaja en pruebas de constitución.`,
                 },
                 subClasses: {
                     'Ladrón': {
                         abilities: false,
                         treats: {
-                            'Dominio del ladrón': `Ventaja en pruebas relacionadas con el hurto y escalar.`,
-                        }
+                            'Dominio del ladrón': 
+                                `Ventaja en pruebas relacionadas con hurto, sigilo y escalar.`,
+                        },
                     },
-                    'Asesino':{
-                        abilities: {
-                            'Puñalada mortal':
-                                `Realizas un Ataque furtivo cuerpo a cuerpo. El daño infligido se dobla. Si fallas, el enemigo realizará un ataque con Ventaja hacia ti. Requiere nivel 12.
-                                Maestría: El daño aumenta a x 2.5.`,
-                        },
+                    'Asesino': {
+                        abilities: false,
                         treats: {
-                            'Dominio del asesino': `Ventaja al realizar ataques furtivos.`
+                            'Dominio del asesino': 
+                                `Ventaja en pruebas de ataque con dagas.`,
                         },
-                    }
+                    },
                 },
             },
 
             'Monje': {
                 abilities: {
                     'Golpe directo': 
-                        `Atacas a un objetivo con un poderoso puñetazo infligiendo 1d4 + modificador de fuerza de daño contundente.
-                        Maestría: El daño aumenta a 1d6.`,
+                        `Atacas a un objetivo con un poderoso puñetazo infligiendo 1d5 + modificador de fuerza de daño contundente.
+                        Maestría: El daño base aumenta a 2d3.`,
                     'Patada inversa': 
                         `Realizas un ataque con el talón usando una patada giratoria inversa pudiendo impactar a más de un objetivo e infligiendo 1d4 + modificador de destreza de daño contundente.
-                        Maestría: Los objetivos que sufran el daño máximo harán una prueba de constitución CD10, si pierden, sufrirán Aturdimiento.`,
+                        Maestría: El primer objetivo en recibir el golpe hará una Prueba de salvación (constitución) CD10 para evitar sufrir Aturdimiento.`,
                     'Meditación': 
-                        `Piertes tu turno. Tu siguiente ataque hará 1d4 de daño adicional y una bonificación de +1 a la precisión.
-                        Maestría: El daño adicional aumenta a 1d6.`,
+                        `Piertes tu turno. Tu siguiente ataque hará 1d4 de daño adicional y tendrá una bonificación de +2 a la precisión. Requiere nivel 4.
+                        Maestría: El daño adicional aumenta a 2d4.`,
                     'A bocajarro': 
-                        `Esta habilidad requiere ser enseñada. Realizas un combo de 4 golpes con tus puños a un solo objetivo infligiendo 1d3 de daño contundente por cada golpe.
-                        Maestría: El número de golpes aumenta a 6.`,
+                        `Realizas un combo golpes a los puntos vitales del objetivo usando tus dedos infligiendo 2d5 de daño perforante. Requiere nivel 8.
+                        Maestría: El objetivo hará una Prueba de salvación (constitución) CD10 para evitar perder su siguiente turno.`,
                     'Golpe cortante': 
-                        `Esta habilidad requiere ser enseñada. Efectúas un difícil ataque contra un objetivo, rozándolo velozmente con una extremidad infligiendo 1d4 + modificador de destreza de daño cortante y aplicando Hemorragia. El ataque se hace con Desventaja.
-                        Maestría: El daño aumenta a 1d6 y ya no se hace con Desventaja.`,
-                    'Rápquit': 
-                        `Esta habilidad requiere ser enseñada. Hasta tu siguiente turno esquivarás todos los ataques. Requiere nivel 16
-                        Maestría: Al esquivar un ataque, haz una prueba de destreza o percepción CD10, si ganas, realizarás un contraataque.`,
+                        `Efectúas un ataque contra un objetivo rozándolo velozmente con una extremidad infligiendo 1d5 + modificador de destreza de daño cortante y aplicando Hemorragia de 1d4 por turno. Requiere nivel 12
+                        Maestría: El daño aumenta a 2d3 y la Hemorragia a 1d5.`,
+                    'Rápquit (No religioso)': 
+                        `Pierdes tu turno. Hasta tu siguiente turno esquivarás todos los ataques posibles. Requiere nivel 16.
+                        Maestría: Al esquivar un ataque, haz una Prueba de salvación (destreza o percepción) CD10 para contraatacar.`,
                 },
                 treats:{
-                    'Dominio del monje': 'Domina el combate desarmado. Ventaja en pruebas relacionadas con reflejos, contraataque y sumisión.',
-                    'Torpeza del monje': 'Desventaja en ataques con armas de todo tipo.',
-                    'Torpeza mágica': 'No pueden aprender ni lanzar hechizos.',
-                    'Torpeza divina': 'No pueden aprender ni lanzar milagros.',
+                    'Dominio del monje': 
+                        `Ventaja en pruebas relacionadas con reflejos, contraataque y sumisión.`,
+                    'Torpeza mágica': 
+                        `No puede aprender ni lanzar hechizos.`,
+                    'Torpeza con armas': 
+                        `Desventaja en pruebas de ataque con armas de todo tipo.`,
                 },
                 subClasses: false,
             },
@@ -332,41 +337,24 @@ class ClassService{
             'Clérigo': {
                 abilities: {
                     'Sintonizar con mi adorado': 
-                        `Haz una prueba de sabiduría CD18, si ganas podrás comunicarte con tu adorado, que te responderá a una pregunta hablando directamente en tu mente. 24 horas de recarga.
+                        `Haz una prueba de sabiduría CD17, si ganas podrás comunicarte con tu adorado, que te responderá a una pregunta hablando directamente en tu mente. 24 horas de recarga.
                         Maestría: La prueba de sabiduría se hará con Ventaja.`,
-                    'Lanzar milagro': 
-                        `Lanzas un milagro según tu nivel de clérigo.
-                        Maestría: La maestría de esta habilidad es requerida para lanzar milagros de nivel 5.`,
                 },
                 treats:{
-                    'Dominio divino': 'Dominio en lanzar milagros',
-                    'Dominio del clérigo': 'Domina el uso de Armas benditas.',
-                    'Torpeza mágica': 'No pueden aprender ni lanzar hechizos.',
-                    'Dependencia a las armas divinas': 'Desventaja al lanzar milagros sin Armas benditas.'
+                    'Dominio del clérigo': 
+                        `Acceso al bonus por clérigo de los milagros.`,
+                    'Dependencia a los cetros': 
+                        `Desventaja en pruebas de ataque que no involucren un cetro.`,
                 },
-                subClasses: {
-                    'Paladín': {
-                        abilities: false,
-                        treats: {
-                            'Dominio de paladín': 
-                                `Al estar conjuntado con armadura pesada obtienes bonificación de +1 en defensa. Desventaja 
-                                en pruebas de ataque que no involucren un Arma bendita cuerpo a cuerpo.`,
-                        },
-                    },
-                    'Sacerdote':{
-                        abilities: false,
-                        treats: {
-                            'Dominio de sacerdote': 
-                                `Acceso al Bonus sacerdotal de los milagros. Desventaja en pruebas de ataque que no involucren un 
-                                bastón Bendito.`,
-                        }
-                    }
-                },
+                subClasses: false
             },
 
 
             'Bardo': {
                 abilities: {
+                    'Labia del bardo (No religioso)':
+                        `Pasiva. Las pruebas de carisma que no involucren sonatas se harán con Ventaja.
+                        Maestría: Las pruebas para tocar sonatas tendrán una bonificación de +1.`,
                     'Sonata relajante':
                         `Tocas una relajante melodía que calma la mente de tus objetivos curando 1d6 de salud mental.`,
                     'Sonata tensa':
