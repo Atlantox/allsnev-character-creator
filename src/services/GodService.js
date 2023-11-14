@@ -368,4 +368,4 @@ class GodService{
     }
 }
 
-export default GodService
+export default GodService;
