@@ -265,7 +265,7 @@ class GodService{
                     'Prisión de agua (Nv 4)':
                         `Maldices a un objetivo con Alcance hábil de 10 metros, envuelves al objetivo en una bola de agua de la que no podrá escapar durante 2 minutos.
                         Bonus por clérigo: Puedes reducir la capacidad pulmonar del objetivo a 0 segundos.`,
-                    'Instancia de Vermidón (Nv 5)':
+                    'Estancia de Vermidón (Nv 5)':
                         `Bendices todo el terreno a 20 metros a tu alrededor durante 10 minutos, toda la materia física se convierte en agua que conserva su figura original. Te bendices a tí y hasta a 5 objetivos para otorgarles Respiración acuática y Movimiento libre bajo el agua.
                         Bonus por clérigo: De ti brotan 4 tentáculos estirables de hasta 10 metros de largo que puedes controlar libremente, los tentáculos poseen ventosas afiladas que hacen 1 de daño por contacto.`,
                 }
