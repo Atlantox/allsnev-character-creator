@@ -14,7 +14,7 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits(['changeClass', 'resetTalents', 'addAbilities'])
+const emit = defineEmits(['changeClass', 'resetTalents'])
 
 const changeClass = () => {
     emit ('changeClass')
@@ -22,10 +22,6 @@ const changeClass = () => {
 
 const resetTalents = () => {
     emit ('resetTalents')
-}
-
-const AddAbilities = (abilities) => {
-    emit ('addAbilities', abilities)
 }
 
 const selectclass = 'w-100 fs-5 rol-select align-bottom'
@@ -80,7 +76,7 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                             :key="index"
                             >    
                                 <option 
-                                :value="subClass"
+                                :value="[subClass]"
                                 >
                                     {{ subClass }}
                                 </option>
@@ -105,8 +101,9 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                                     :id="'scl-'+index" 
                                     class="my-checkbox ms-4" 
                                     type="checkbox"
-                                    :value="value"
-                                    @change="AddAbilities(value.abilities)"
+                                    :value="subClass"
+                                    v-model="props.currentClass.subClass" 
+                                    @change="resetTalents"
                                     >
                                 </td>
                             </tr>

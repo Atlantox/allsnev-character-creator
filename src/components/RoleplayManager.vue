@@ -53,13 +53,16 @@ const getTalents = () => {
 
     let subclassAbilities = {};
     let subclassTreats = {};
-    if(currentClass.subClass !== ''){
-        if(classes[currentClass.mainClass].subClasses !== undefined){
-            if(classes[currentClass.mainClass].subClasses[currentClass.subClass] !== undefined){
-                subclassAbilities = classes[currentClass.mainClass].subClasses[currentClass.subClass].abilities;
-                subclassTreats = classes[currentClass.mainClass].subClasses[currentClass.subClass].treats;
+
+    if(currentClass.subClass.length > 0){
+        currentClass.subClass.forEach((subclass) => {
+            if(classes[currentClass.mainClass].subClasses !== undefined){
+                if(classes[currentClass.mainClass].subClasses[subclass] !== undefined){
+                    subclassAbilities = Object.assign({}, subclassAbilities, classes[currentClass.mainClass].subClasses[subclass].abilities);
+                    subclassTreats = Object.assign({}, subclassTreats, classes[currentClass.mainClass].subClasses[subclass].treats);
+                }
             }
-        }
+        })
     }
 
     let godAbilities = {};
@@ -93,7 +96,7 @@ const changeRace = (new_race) => {
 }
 
 const changeClass = () => {
-    current_character.value.classInfo.subClass = '';
+    current_character.value.classInfo.subClass = [];
     current_character.value.classInfo.god = '';
     current_character.value.classInfo.classLevel = 0;
     resetTalents();
@@ -103,15 +106,6 @@ const resetTalents = () => {
     allTalents.value = getTalents();
     talentsInfo.value = allTalents.value;
     current_character.value.talents = talentsInfo.value;
-}
-
-const addAbilities = (abilities) => {
-    for (const [key, value] of Object.entries(abilities)) {
-        if(key in current_character.value.talents.abilities)
-            delete current_character.value.talents.abilities[key]
-        else
-            current_character.value.talents.abilities[key] = value
-    }
 }
 
 const exportCharacter = async (exportType) => {    
@@ -245,7 +239,7 @@ const resetCurrentCharacter = () => {
         race: 'Humano',
         classInfo: {
             mainClass: '',
-            subClass: '',
+            subClass: [],
             classLevel: 0,
             god: '',
         },
@@ -256,12 +250,11 @@ const resetCurrentCharacter = () => {
         inventory: {},
         lore: ''
     }
+    resetTalents()
 }
 
 resetCurrentCharacter()
-resetTalents()
-allTalents.value = getTalents()
-talentsInfo.value = allTalents.value
+
 </script>
 
 <template>
@@ -321,7 +314,6 @@ talentsInfo.value = allTalents.value
                     :gods=gods
                     @changeClass="changeClass"
                     @resetTalents="resetTalents"
-                    @addAbilities="addAbilities"
                     />
                 </div>
             </section>
