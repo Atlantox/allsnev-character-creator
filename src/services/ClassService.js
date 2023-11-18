@@ -41,8 +41,6 @@ class ClassService{
                     'Mixto': {
                         abilities: false,
                         treats: {
-                            'Aprendiz hechicero': 
-                                `Puede aprender los hechizos de nivel 1 de cualquier escuela de magia.`,
                             'Aprendiz manual': 
                                 `Puede usar armas y herramientas de destreza con normalidad.`,
                         },
@@ -175,9 +173,21 @@ class ClassService{
                             'Reanimar cadáver (4)':
                                 `Reanimas a un cadáver que aún conserve su capacidad motora para que siga tus órdenes. Su costo depende del ser reanimado. Referencia: un gato.`,
                             'Conversar con cadáver (3)':
-                                `Te enlazas con un cadáver para hablar con él, el cadáver responderá a 4 preguntas que le hagas según su criterio (puede mentir). Alcance hábil de 5 metros.`,
+                            `Te enlazas con un cadáver para hablar con él, el cadáver responderá a 4 preguntas que le hagas según su criterio (puede mentir). Alcance hábil de 5 metros.`,
+                            'Envenenar (2)':
+                                `Creas un Veneno de 1d5 de daño por turno y lo metes en el cuerpo de un objetivo con Alcance hábil de 10 metros.`,
+                            'Crear abominación (12)':
+                                `Haces objetivo a un cadáver y cualquier cantidad de otros cadáveres a 2 metros o menos de este, combinas a los cadáveres para formar una masa de carne reanimada que luchará por ti. La abimnación tendrá una fuerza y constitución dependiendo de la morfología de su cuerpo.`,
                             'Reanimación en masa (12)':
                                 `Reanimas a todos los cadáveres que estén dentro de tu Nivel de magia y que se encuentren en un área de 5 metros a la redonda. Alcance hábil de 5 metros.`,
+                            'Veneno debilitante (6)':
+                                `Creas un veneno debilitante que reduce en 3 la característica a tu elección de un objetivo con Alcance hábil de 10 metros.`,
+                            'Veneno semiparalizante (7)':
+                                `Le infliges Parálisis parcial a un objetivo con Alcance hábil de 10 metros durante 2 minutos.`,
+                            'Veneno paralizante (12)':
+                                `Le infliges Parálisis a un objetivo con Alcance hábil de 10 metros durante 2 minutos.`,
+                            'Gas tóxico (15)':
+                                `Cubres un área de 2 metros de radio con gas tóxico infligiendo Veneno de 1d8 de daño por turno a todo aquel que lo respire. Alcance hábil de 5 metros.`,
                             'Resucitar cadáver (15)':
                                 `Resucitas a un cadáver, el cadáver conservará sus recuerdos y personalidad, además estará bajo tu control hasta que decidas terminar la resurrección. Alcance hábil de 5 metros.`,
                         },
@@ -189,8 +199,12 @@ class ClassService{
                                 `Dominas un objeto con un peso máximo de 500g con un Alcance hábil de 2 metros a una velocidad de 2m/s.`,
                             'Telequinesis II (4)':
                                 `Dominas un objeto con un peso máximo de 5kg con un Alcance hábil de 5 metros a una velocidad de 5m/s.`,
+                            'Detectar objetivos (2)':
+                                `Emites un pulso invisible de 5 metros de radio desde tu posición. Los objetivos que puedas manipular con tu nivel de telequinesis se te serán revelados.`,
                             'Telequinesis III (6)':
                                 `Dominas un objeto con un peso máximo de 20kg con un Alcance hábil de 10 metros a una velocidad de 10m/s.`,
+                            'Teletransportar objetivo (8)':
+                                `Teletransportas un objetivo que puedas levantar a otra ubicación dentro de tu Alcance hábil.`,
                             'Telequinesis IV (12)':
                                 `Dominas un objeto con un peso máximo de 80kg con un Alcance hábil de 20 metros a una velocidad de 20m/s.`,
                             'Dominar ser vivo (15)':

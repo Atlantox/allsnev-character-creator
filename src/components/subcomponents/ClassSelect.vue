@@ -14,7 +14,7 @@ const props = defineProps({
     }
 })
 
-const emit = defineEmits(['changeClass', 'resetTalents'])
+const emit = defineEmits(['changeClass', 'resetTalents', 'addAbilities'])
 
 const changeClass = () => {
     emit ('changeClass')
@@ -22,6 +22,10 @@ const changeClass = () => {
 
 const resetTalents = () => {
     emit ('resetTalents')
+}
+
+const AddAbilities = (abilities) => {
+    emit ('addAbilities', abilities)
 }
 
 const selectclass = 'w-100 fs-5 rol-select align-bottom'
@@ -63,22 +67,51 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                     <h2>
                         Sub clase
                     </h2>
-                    <select 
-                    :class="selectclass" 
-                    v-model="props.currentClass.subClass" 
-                    @change="resetTalents"
+                    <template
+                    v-if="props.currentClass.mainClass !== 'Hechicero'"
+                    >  
+                        <select 
+                        :class="selectclass" 
+                        v-model="props.currentClass.subClass" 
+                        @change="resetTalents"
+                        >
+                            <template
+                            v-for="(value, subClass, index) in props.classes[props.currentClass.mainClass].subClasses"
+                            :key="index"
+                            >    
+                                <option 
+                                :value="subClass"
+                                >
+                                    {{ subClass }}
+                                </option>
+                                </template>
+                        </select>
+                    </template>
+                    <div
+                    v-else
+                    class="col-12 row m-0 p-0 justify-content-start"
                     >
-                        <template
-                        v-for="(value, subClass, index) in props.classes[props.currentClass.mainClass].subClasses"
-                        :key="index"
-                        >    
-                            <option 
-                            :value="subClass"
+                        <table class="col-8">
+                            <tr
+                            v-for="(value, subClass, index) in props.classes[props.currentClass.mainClass].subClasses"
+                            :key="index"
                             >
-                                {{ subClass }}
-                            </option>
-                            </template>
-                    </select>
+                                <td>
+                                    <label :for="'scl-'+index">{{ subClass }}</label>
+                                </td>
+                                <td>
+                                    <input 
+                                    name="subclass" 
+                                    :id="'scl-'+index" 
+                                    class="my-checkbox ms-4" 
+                                    type="checkbox"
+                                    :value="value"
+                                    @change="AddAbilities(value.abilities)"
+                                    >
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
                 </div>
             </template>
 
@@ -132,5 +165,9 @@ input, select, option{
 select{
     height:35px;
     padding-top:6px;
+}
+
+.my-checkbox{
+    transform:scale(1.8);
 }
 </style>

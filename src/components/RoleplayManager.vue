@@ -105,6 +105,15 @@ const resetTalents = () => {
     current_character.value.talents = talentsInfo.value;
 }
 
+const addAbilities = (abilities) => {
+    for (const [key, value] of Object.entries(abilities)) {
+        if(key in current_character.value.talents.abilities)
+            delete current_character.value.talents.abilities[key]
+        else
+            current_character.value.talents.abilities[key] = value
+    }
+}
+
 const exportCharacter = async (exportType) => {    
     var elementToExport = document.getElementById('characterSheet');
     const loreTextarea = document.getElementById('character-lore-textarea');
@@ -312,6 +321,7 @@ talentsInfo.value = allTalents.value
                     :gods=gods
                     @changeClass="changeClass"
                     @resetTalents="resetTalents"
+                    @addAbilities="addAbilities"
                     />
                 </div>
             </section>
