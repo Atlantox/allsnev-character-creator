@@ -64,6 +64,8 @@ class ClassService{
                 subClasses: { 
                     'Elementalista': {
                         abilities: {
+                            'Potenciar elemento':
+                                `Tu siguiente hechizo consumirá 2 más de maná para infligir 1d4 de daño adicional. Puede usarse múltiples veces.`,
                             'Chispa (1)':
                                 `Generas una pequeña chispa eléctrica con Alcance hábil de 3 metros. La chispa es tan débil que no ocasiona daño.`,
                             'Ascua (1)':
@@ -123,6 +125,8 @@ class ClassService{
                     },
                     'Conjurador': {
                         abilities: {
+                            'Concentración total':
+                                `Consume 2 de maná cada turno incluyendo el actual, el conjurador doblará su Alcance hábil y la velocidad de sus conjuraciones mientras se mantenga concentrado.`,
                             'Conjurar figura (2)':
                                 `Conjuras un cubo, esfera u otra figura pequeña que puedes movilizar. Referencia: un cubo de 10cm`,
                             'Conjurar herramienta (3)':
@@ -140,6 +144,8 @@ class ClassService{
                     },
                     'Ilusionista': {
                         abilities: {
+                            'Segnda oportnidad':
+                                `Si un hechizo de ilusión falla, el jugador puede consumir 3  de maná para realizar otro intento (una vez por acción).`,
                             'Transmitir falso sentido (2)':
                                 `Transmites un falso sentido al objetivo como un ruido, ilusión, toqueteo, sabor u olor dependiendo de tu Nivel de magia.`,
                             'Compartir sentido (2)':
@@ -157,6 +163,8 @@ class ClassService{
                     },
                     'Alterador': {
                         abilities: {
+                            'Imbuir área':
+                                `El siguiente hechizo de imbuición consume 4 de maná extra a cambio de imbuir los elementos seleccionados en un área de 2 metros a la redonda del hechizo.`,
                             'Alterar peso (2)':
                                 `Modificas el peso de un objeto para hacerlo más pesado o ligero`,
                             'Alterar dureza (3)':
@@ -170,6 +178,8 @@ class ClassService{
                     },
                     'Nigromante': {
                         abilities: {
+                            'Explotar reanimación':
+                                `El nigromante hace estallar a un reanimado propio, causando daño según su vida restante, el alcance depende del tamaño del reanimado, los afectados sufren Veneno de 1d4 por turno. Consumo de maná: 0 + 5 por cada 10 de vida que tenga le reanimado. (Min: 5)`,
                             'Reanimar cadáver (4)':
                                 `Reanimas a un cadáver que aún conserve su capacidad motora para que siga tus órdenes. Su costo depende del ser reanimado. Referencia: un gato.`,
                             'Conversar con cadáver (3)':
@@ -195,6 +205,8 @@ class ClassService{
                     },
                     'Dominador': {
                         abilities: {
+                            'Plosión':
+                                `El dominador puede hacer que uno de sus objetivos manipulados haga implosión o explosión. La explosión hace daño a los al rededores dependiendo de la dureza y tamaño del objeto. La implosión comprime el objeto lo más posible, la dificultad depende de la dureza y tamaño del objeto. Coste estándar de maná: 3.`,
                             'Telequinesis I (2)':
                                 `Dominas un objeto con un peso máximo de 500g con un Alcance hábil de 2 metros a una velocidad de 2m/s.`,
                             'Telequinesis II (4)':
@@ -214,6 +226,8 @@ class ClassService{
                     },
                     'Protector': {
                         abilities: {
+                            'Área protectora':
+                                `Crea un área protectora de 2 metros de radio de ti, los objetivos que escojas dentro del área sanan sus heridas y los protege de hechizos mágicos según el nivel de magia del protector. Coste de maná: 5`,
                             'Cicatrizar (3)':
                                 `Cicatrizas una herida ligera y restauras 1d4 de salud al objetivo con Alcance hábil de 3 metros.`,
                             'Curar dolencia (4)':
