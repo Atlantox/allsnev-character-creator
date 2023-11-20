@@ -304,6 +304,7 @@ resetCurrentCharacter()
                     :statistics=current_character.statistics
                     :negativeEffects=current_character.negativeEffects
                     :currentState=current_character.state
+                    :characterRace="current_character.race"
                     />
                 </div>
 

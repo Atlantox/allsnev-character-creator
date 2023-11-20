@@ -15,17 +15,61 @@ const props = defineProps({
     currentState:{
         type: Object,
         required: true
+    },
+    characterRace:{
+        type: String,
+        required: true
     }
 })
 
 
 // Randomly generate a random numbers between 6 and 15 for each statistic
 const generateStatistics = () => {
-    let randomNumbers = [];
-    for (var el in props.statistics) {
-        randomNumbers.push((Math.floor(Math.random() * 10) + 1) + 5); // 1d10 + 5
+    let statisticGeneration = [];
+    if(props.characterRace === 'Humano'){
+        statisticGeneration = [
+            '2d3',
+            '2d3',
+            '2d3',
+            '2d3',
+            '2d3',
+            '2d3',
+            '2d3',
+        ];
     }
-    alert(randomNumbers);
+    else{
+        statisticGeneration = [
+            '5d2',
+            '2d3',
+            '2d3',
+            '2d3',
+            '2d3',
+            '2d3',
+            '1d4',
+        ];
+    }
+    alert(getStatistics(statisticGeneration));
+}
+
+// Gets a list of dices like '2d3', '1d10', '3d4'. All with a + 4
+const getStatistics = (dices) => {
+    const baseStatistic = 4;
+    let statisticsResults = [];
+    dices.forEach((launch) => {
+        var total = 0;
+        const splits = launch.split('d');
+        const diceNumber = splits[0];
+        const sidesNumber = splits[1];
+        var i = 0;
+        while (i < diceNumber) {
+            var myrandom = (Math.floor(Math.random() * sidesNumber ) + 1);
+            total+= myrandom;
+            i++;
+        }
+        console.log(total);
+        statisticsResults.push(total + baseStatistic);
+    })
+    return statisticsResults;
 }
 
 
@@ -67,8 +111,8 @@ const getModifier = (stat) => {
 
 // Return dice modifier color: red for negative, green for positive and white for 0
 const getDiceModifierColor = (value) => {
-  if (value > 0) return 'text-success'; 
-  else if (value < 0) return 'text-danger';
+  if (value > 0) return 'statistic-positive'; 
+  else if (value < 0) return 'statistic-negative';
   else return 'text-white';
 };
 
@@ -203,6 +247,15 @@ table{
 figure{
     box-shadow: 0 0 50px inset rgb(45, 160, 45);
 }
+
+.statistic-positive{
+    color:rgb(0, 255, 0);
+}
+
+.statistic-negative{
+    color:rgb(255, 68, 68);
+}
+
 .effect-active{
     box-shadow: 0 0 50px inset red;
 }
