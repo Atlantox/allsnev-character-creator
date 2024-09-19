@@ -32,11 +32,11 @@ const existantTalent = ref({
 
 const addCustomTalent = (talentType) => {
     if(talentType === 'ability'){
-        props.talents.abilities[customTalent.value.ability.name] = customTalent.value.ability.description;
+        props.talents.abilities[customTalent.value.ability.name + '#'] = customTalent.value.ability.description;
         customTalent.value.ability = {name: '', description: ''}
     }
     else if(talentType === 'treat'){
-        props.talents.treats[customTalent.value.treat.name] = customTalent.value.treat.description;
+        props.talents.treats[customTalent.value.treat.name + '#'] = customTalent.value.treat.description;
         customTalent.value.treat = {name: '', description: ''}
     }
 }
@@ -74,8 +74,8 @@ const addExistingTalent = (talentType) => {
                 v-for="(content, ability, index) in props.talents.abilities"
                 :key="index"
                 >
-                    <td :class="talentNameClass">{{ ability }}</td>
-                    <td :class="'talent-content ' + descriptionClass"> {{ content }} </td>
+                    <td :class="talentNameClass">{{ ability[ability.length - 1] === '#' ? ability.split('#')[0] : ability }}</td> <!-- If the ability ends with '#' the treat are a custom ability -->
+                    <td :class="'talent-content ' + descriptionClass" v-html="content"></td>
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="deleteTalent(ability)" class="col-4 text-center rol-button2 rounded m-0 p-1">
@@ -157,8 +157,8 @@ const addExistingTalent = (talentType) => {
                 v-for="(content, treat, index) in props.talents.treats"
                 :key="index"
                 >
-                    <td :class="talentNameClass">{{ treat }}</td>
-                    <td :class="'talent-content ' + descriptionClass"> {{ content }} </td>
+                    <td :class="talentNameClass">{{ treat[treat.length - 1] === '#' ? treat.split('#')[0] : treat }}</td> <!-- If the treat ends with '#' the treat are a custom treat -->
+                    <td :class="'talent-content ' + descriptionClass" v-html="content"></td>
                     <td> 
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="deleteTalent(treat)" class="col-4 text-center rol-button2 rounded m-0 p-1">

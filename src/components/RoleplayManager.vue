@@ -16,16 +16,19 @@ import ExportOptions from './subcomponents/ExportOptions.vue';
 import RaceService from '@/services/RaceService.js';
 import ClassService from '@/services/ClassService.js';
 import GodService from '@/services/GodService.js';
+import MagicService from '@/services/MagicService.js'
 
 // Service Instances
-const raceService = new RaceService();
-const godService = new GodService();
-const classService = new ClassService();
+const raceService = new RaceService()
+const godService = new GodService()
+const classService = new ClassService()
+const magicService = new MagicService()
 
 // Services Fetch
 const races = raceService.getRaces();
-const classes = classService.getClasses();
+const classes = classService.getClasses()
 const gods = godService.getGods();
+const magicBranches = magicService.getBranches()
 
 // Ref variables
 const characters = ref([])
@@ -54,10 +57,11 @@ const getTalents = () => {
     let subclassAbilities = {};
     let subclassTreats = {};
 
-    if(currentClass.subClass.length > 0){
-        currentClass.subClass.forEach((subclass) => {
-            if(classes[currentClass.mainClass].subClasses !== undefined){
-                if(classes[currentClass.mainClass].subClasses[subclass] !== undefined){
+    if(currentClass.subClass.length > 0){ // If the character have subclasses
+        currentClass.subClass.forEach((subclass) => { // Foreach subclass
+            if(classes[currentClass.mainClass].subClasses !== undefined){  // If the class have subclasses
+                if(classes[currentClass.mainClass].subClasses[subclass] !== undefined){  // If the current subclass exists
+                    // Add the subclass abilities and treats
                     subclassAbilities = Object.assign({}, subclassAbilities, classes[currentClass.mainClass].subClasses[subclass].abilities);
                     subclassTreats = Object.assign({}, subclassTreats, classes[currentClass.mainClass].subClasses[subclass].treats);
                 }
@@ -68,18 +72,43 @@ const getTalents = () => {
     let godAbilities = {};
     if(currentClass.god !== '')
         godAbilities = gods[currentClass.god].abilities;
+
+
+    let magicSpells = {};
+    if(currentClass.magicBranches.length > 0){
+        currentClass.magicBranches.forEach((branch) => {
+            if(magicBranches[branch] !== undefined)
+                magicSpells = Object.assign({}, magicSpells, magicBranches[branch].abilities);
+        })
+    }
+
+    let customAbilities = {};
+    for (const [ability, description] of Object.entries(current_character.value.talents.abilities)) {
+        if(ability[ability.length - 1] === '#') // Abilities with a '#' at the end, are custom abilities
+            customAbilities[ability] = description
+    }
+
+    let customTreats = {};
+    for (const [treat, description] of Object.entries(current_character.value.talents.treats)) {
+        if(treat[treat.length - 1] === '#') // Treats with a '#' at the end, are custom treats
+            customTreats[treat] = description
+    }
+
     
     let totalAbilities = Object.assign({},
         raceAbilities,
         classAbilities,
         subclassAbilities,
-        godAbilities
+        godAbilities,
+        magicSpells,
+        customAbilities
     );
 
     let totalTreats = Object.assign({},
         raceTreats,
         classTreats,
-        subclassTreats
+        subclassTreats,
+        customTreats
     );
 
     return {
@@ -95,6 +124,7 @@ const changeRace = (new_race) => {
     resetTalents();
 }
 
+
 const changeClass = () => {
     current_character.value.classInfo.subClass = [];
     current_character.value.classInfo.god = '';
@@ -102,11 +132,13 @@ const changeClass = () => {
     resetTalents();
 }
 
+
 const resetTalents = () => {
     allTalents.value = getTalents();
     talentsInfo.value = allTalents.value;
     current_character.value.talents = talentsInfo.value;
 }
+
 
 const exportCharacter = async (exportType) => {    
     var elementToExport = document.getElementById('characterSheet');
@@ -164,6 +196,7 @@ const exportCharacter = async (exportType) => {
     loreTextarea.classList.remove('d-none');
 }
 
+
 const exportAllCharacters = () => {
     const jsonString = JSON.stringify(characters.value, null, 2);
 
@@ -176,6 +209,7 @@ const exportAllCharacters = () => {
     downloadLink.click();
     URL.revokeObjectURL(url);
 }
+
 
 const saveCurrentCharacter = () => {
     characters.value.push(current_character.value);
@@ -242,6 +276,7 @@ const resetCurrentCharacter = () => {
             subClass: [],
             classLevel: 0,
             god: '',
+            magicBranches: [],
         },
         talents:{
             abilities: [],
@@ -313,6 +348,7 @@ resetCurrentCharacter()
                     :classes=classes
                     :currentClass=current_character.classInfo
                     :gods=gods
+                    :magicBranches=magicBranches
                     @changeClass="changeClass"
                     @resetTalents="resetTalents"
                     />

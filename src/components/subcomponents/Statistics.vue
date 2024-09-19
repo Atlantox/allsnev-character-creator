@@ -27,6 +27,7 @@ const props = defineProps({
 const generateStatistics = () => {
     let statisticGeneration = [];
     if(props.characterRace === 'Humano'){
+        // All are average statistics
         statisticGeneration = [
             '2d3',
             '2d3',
@@ -39,21 +40,21 @@ const generateStatistics = () => {
     }
     else{
         statisticGeneration = [
-            '5d2',
+            '5d2', // Strong statistic
             '2d3',
             '2d3',
             '2d3',
             '2d3',
             '2d3',
-            '1d4',
+            '1d4', // Weak statistic
         ];
     }
     alert(getStatistics(statisticGeneration));
 }
 
-// Gets a list of dices like '2d3', '1d10', '3d4'. All with a + 4
+// Gets a list of dices like '2d3', '1d10', '3d4'. All with a + baseStatistic
 const getStatistics = (dices) => {
-    const baseStatistic = 4;
+    const baseStatistic = 3;
     let statisticsResults = [];
     dices.forEach((launch) => {
         var total = 0;

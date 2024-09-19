@@ -11,6 +11,10 @@ const props = defineProps({
     gods:{
         type: Object,
         required: true
+    },
+    magicBranches:{
+        type: Object,
+        required: true
     }
 })
 
@@ -62,53 +66,23 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                 >
                     <h2>
                         Sub clase
-                    </h2>
-                    <template
-                    v-if="props.currentClass.mainClass !== 'Hechicero'"
-                    >  
-                        <select 
-                        :class="selectclass" 
-                        v-model="props.currentClass.subClass" 
-                        @change="resetTalents"
-                        >
-                            <template
-                            v-for="(value, subClass, index) in props.classes[props.currentClass.mainClass].subClasses"
-                            :key="index"
-                            >    
-                                <option 
-                                :value="[subClass]"
-                                >
-                                    {{ subClass }}
-                                </option>
-                                </template>
-                        </select>
-                    </template>
-                    <div
-                    v-else
-                    class="col-12 row m-0 p-0 justify-content-start"
+                    </h2> 
+                    <select 
+                    :class="selectclass" 
+                    v-model="props.currentClass.subClass" 
+                    @change="resetTalents"
                     >
-                        <table class="col-8">
-                            <tr
-                            v-for="(value, subClass, index) in props.classes[props.currentClass.mainClass].subClasses"
-                            :key="index"
+                        <template
+                        v-for="(value, subClass, index) in props.classes[props.currentClass.mainClass].subClasses"
+                        :key="index"
+                        >    
+                            <option 
+                            :value="[subClass]"
                             >
-                                <td>
-                                    <label :for="'scl-'+index">{{ subClass }}</label>
-                                </td>
-                                <td>
-                                    <input 
-                                    name="subclass" 
-                                    :id="'scl-'+index" 
-                                    class="my-checkbox ms-4" 
-                                    type="checkbox"
-                                    :value="subClass"
-                                    v-model="props.currentClass.subClass" 
-                                    @change="resetTalents"
-                                    >
-                                </td>
-                            </tr>
-                        </table>
-                    </div>
+                                {{ subClass }}
+                            </option>
+                            </template>
+                    </select>
                 </div>
             </template>
 
@@ -148,6 +122,34 @@ const selectContainerClass = 'col-12 p-3 pb-4 d-flex flex-column align-items-sta
                     <input v-model="props.currentClass.classLevel" class="w-25 fs-5 text-center rol-input align-bottom" type="text">
                 </div>
             </template>
+
+            <div :class="selectContainerClass">
+                <h2>
+                    Ramas mágicas
+                </h2>
+
+                <table class="col-8">
+                    <tr
+                    v-for="(value, branch, index) in props.magicBranches"
+                    :key="index"
+                    >
+                        <td>
+                            <label :for="'scl-'+index">{{ branch }}</label>
+                        </td>
+                        <td>
+                            <input 
+                            name="magicBranch" 
+                            :id="'scl-'+index" 
+                            class="my-checkbox ms-4" 
+                            type="checkbox"
+                            :value="branch"
+                            v-model="props.currentClass.magicBranches" 
+                            @change="resetTalents"
+                            >
+                        </td>
+                    </tr>
+                </table>
+            </div>
         </div>
     </div>
 </template>

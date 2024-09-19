@@ -49,8 +49,14 @@ const deleteInventoryObject = (inventoryObjectName) => {
                 :key="index"
                 >
                     <td :class="talentNameClass">{{ inventoryObject }}</td>
-                    <td :class="'talent-content ' + descriptionClass"> {{ content.description }} </td>
-                    <td> {{ content.quantity }} </td>
+                    <td :class="'talent-content ' + descriptionClass" v-html="content.description"></td>
+                    <td>
+                        <div class="row m-0 p-0 justify-content-center align-items-middle fs-4">
+                            <span class="rol-button col-3 bg-danger rounded" @click="content.quantity--">-</span>
+                            <span class="col-5 align-middle">{{ content.quantity }}</span>
+                            <span class="rol-button col-3 bg-success rounded" @click="content.quantity++">+</span>
+                        </div> 
+                    </td>
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="deleteInventoryObject(inventoryObject)" class="col-4 text-center rol-button2 rounded m-0 p-1">
