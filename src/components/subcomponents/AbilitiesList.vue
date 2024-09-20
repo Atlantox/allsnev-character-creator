@@ -12,8 +12,8 @@ const props = defineProps({
 })
 
 const thClass = 'h4'
-const descriptionClass = 'fs-6 p-1'
-const talentNameClass = 'h5'
+const descriptionClass = 'fs-description p-1'
+const talentNameClass = 'fs-name'
 
 const deleteTalent = (target_talent) => {    
     delete props.talents.abilities[target_talent];
@@ -121,7 +121,7 @@ const addExistingTalent = (talentType) => {
                                 :value="{name:ability, description:description}"
                                 :description="description"
                                 >
-                                    {{ ability }}
+                                    {{ ability[ability.length - 1] === '#' ? ability.split('#')[0] : ability }}
                                 </option>
                             </select>   
                         </div>
@@ -204,7 +204,7 @@ const addExistingTalent = (talentType) => {
                                 :value="{name:treat, description:description}"
                                 :description="description"
                                 >
-                                    {{ treat }}
+                                    {{ treat[treat.length - 1] === '#' ? treat.split('#')[0] : treat }}
                                 </option>
                             </select>   
                         </div>

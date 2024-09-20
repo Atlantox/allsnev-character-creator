@@ -51,8 +51,8 @@ class RaceService{
                 treats:{
                     'Intelecto innato': 
                         `Bonificación de +1 en pruebas de inteligencia.`,
-                    'Belleza':
-                        `Bonificación de +1 en pruebas de carisma ante personas interesadas en tu género.`,
+                    'Ojos hermosos':
+                        `Al realizar una prueba de carisma, lanza una moneda, si ganas, obtienes una bonificación de +2.`,
                     'Saber de naturaleza':
                         `Bonificación de +1 en pruebas de sabiduría relacionadas con la magia y la naturaleza.` ,
                 },
@@ -62,7 +62,7 @@ class RaceService{
                 icon: 'balance.png',
                 image: 'elfo_negro.jpeg',
                 abilities: {
-                    'Lectura secreta': `Haces una prueba de percepción CD11 para descubrir un aspecto de la personalidad de una persona con 
+                    'Lectura secreta': `Haces una prueba de percepción CD10 para descubrir un aspecto de la personalidad de una persona con 
                         Alcance hábil de 10 metros. Debes verle el rostro. 2 usos. Se recarga cada descanso corto.`,
                 },
                 treats:{
@@ -70,8 +70,8 @@ class RaceService{
                         'Bonificación de +1 en pruebas de percepción.',
                     'Visión nocturna': 
                         'Puedes ver en la oscuridad normal hasta 50m y 10m en oscuridad total.',
-                    'Sentidos nocturnos': 
-                        'Mientras haya oscuridad obtienes una bonificación de +2 en percepción.',
+                    'Comodidad nocturna': 
+                        'Mientras haya oscuridad obtienes una bonificación de +1 en todas tus características.',
                 },
             },
           
@@ -98,12 +98,13 @@ class RaceService{
                 image: 'porcino.jpg',
                 abilities: {
                     'Convertir grasa': 
-                        `Conviertes tu grasa en poder muscular. Hasta el final del combate puedes convertir hasta 5 puntos de constitución 
-                        en fuerza. Un uso. Se recarga con un descanso corto. La vida perdida por la conversión no se recupera.`,
+                        `Conviertes tu grasa en poder muscular. Puedes convertir hasta 5 puntos de constitución en fuerza. Un uso. 
+                        La bonificación se acaba al terminar un combate o al pasar 30 minutos. Se recarga con un descanso corto. 
+                        La vida perdida por la conversión no se recupera.`,
                 },
                 treats:{
                     'Maestro chef':
-                        `Las comidas cocinadas ganan una bonificación de +5 nutrientes.` ,
+                        `Los productos comestibles cocinados o preparados otorgan una bonificación de +1 en una característica aleatoría durante 2 horas al ser consumidas.` ,
                     'Resistencia al frío II':
                         `Resiste el frío de nivel 2 sin ningún problema.` ,
                     'Robustez':
@@ -115,10 +116,10 @@ class RaceService{
                 icon: 'flechas.png',
                 image: 'ratapido.jpeg',
                 abilities: {
-                    'Ojo de ladrón': 
-                        `Ves el bolso, saco u otro recipiente de tela o cristal, haz una prueba de sabiduría o percepción CD12, si ganas, 
-                        adivinas acertadamente un objeto dentro del recipiente. Si el recipiente lo lleva alguien, debes estar fuera de su campo 
-                        de visión. 2 usos. Se recarga con un descanso largo`,
+                    'Marcar presa': 
+                        `Marcas a un objetivo hasta el final del combate. El objetivo marcado tendrá a tu elección: 
+                        Crítico aumentado en 1 en ataques hacia él o bonificación de +2 en pruebas de ataque hacia él. 
+                        Un uso. Se recupera tras un descanso corto.`,
                 },
                 treats:{
                     'Trepador innato':
@@ -135,9 +136,9 @@ class RaceService{
                 image: 'corvido.jpeg',
                 abilities: {
                     'Mimetizar técnica': 
-                        `Haz una prueba de sabiduría para intentar aprender un hechizo o habilidad del que hayas sido testigo la última hora. 
-                        La dificultad dependerá de la complejidad de la habilidad. Podrás usar la habilidad mimetizada hasta 2 veces (una habilidad a la vez). 
-                        Un uso. Se recarga tras un descanso largo.`,
+                        `Prestas atención a un hechizo o habilidad, si estás en combate el turno se consume. 
+                        Haces una prueba de sabiduría, la dificultad dependerá de la complejidad de la habilidad o hechizo a mimetizar. 
+                        Podrás usar la habilidad mimetizada hasta 2 veces (una habilidad a la vez). Un uso. Se recarga tras un descanso largo.`,
                 },
                 treats:{
                     'Erudito':
@@ -145,7 +146,7 @@ class RaceService{
                     'Mimetizar voz':
                         `Puede imitar voces y sonidos casi a la perfección.` ,
                     'Optimización nutricional':
-                        `Tras adquirir Hambruna obtienes un margen de 12 horas antes de recibir sus efectos negativos.` ,
+                        `Puedes pasar el doble de tiempo de lo normal antes de sentir Hambruna.` ,
                 },
             },
         }

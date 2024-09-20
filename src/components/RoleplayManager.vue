@@ -73,6 +73,10 @@ const getTalents = () => {
     if(currentClass.god !== '')
         godAbilities = gods[currentClass.god].abilities;
 
+    let godTreats = {};
+    if(currentClass.god !== '')
+        godTreats = gods[currentClass.god].treats;
+
 
     let magicSpells = {};
     if(currentClass.magicBranches.length > 0){
@@ -108,6 +112,7 @@ const getTalents = () => {
         raceTreats,
         classTreats,
         subclassTreats,
+        godTreats,
         customTreats
     );
 

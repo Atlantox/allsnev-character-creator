@@ -8,8 +8,8 @@ const props = defineProps({
 })
 
 const thClass = 'h4'
-const descriptionClass = 'fs-6 p-1'
-const talentNameClass = 'h4'
+const inventoryNameClass = 'fs-name'
+const descriptionClass = 'fs-description p-1'
 
 const customItem = ref({name:'', description:'', quantity: ''});
 
@@ -48,8 +48,8 @@ const deleteInventoryObject = (inventoryObjectName) => {
                 v-for="(content, inventoryObject, index) in props.characterInventory"
                 :key="index"
                 >
-                    <td :class="talentNameClass">{{ inventoryObject }}</td>
-                    <td :class="'talent-content ' + descriptionClass" v-html="content.description"></td>
+                    <td :class="inventoryNameClass">{{ inventoryObject }}</td>
+                    <td :class="'inventory-content ' + descriptionClass" v-html="content.description"></td>
                     <td>
                         <div class="row m-0 p-0 justify-content-center align-items-middle fs-4">
                             <span class="rol-button col-3 bg-danger rounded" @click="content.quantity--">-</span>
@@ -101,7 +101,7 @@ th, td{
     border: 2px black solid;
 }
 
-.talent-content{
+.inventory-content{
     text-align:left   
 }
 

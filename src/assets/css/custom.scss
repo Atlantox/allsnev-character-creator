@@ -16,6 +16,14 @@ input, select{
     font-family: $my-font;
 }
 
+.fs-description{
+    font-size:17px;
+}
+
+.fs-name{
+    font-size:23px;
+}
+
 textarea{
     background: $primary-light;
 }

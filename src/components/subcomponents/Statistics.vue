@@ -54,7 +54,7 @@ const generateStatistics = () => {
 
 // Gets a list of dices like '2d3', '1d10', '3d4'. All with a + baseStatistic
 const getStatistics = (dices) => {
-    const baseStatistic = 3;
+    const baseStatistic = 4;
     let statisticsResults = [];
     dices.forEach((launch) => {
         var total = 0;
