@@ -227,7 +227,7 @@ const statisticTdClass = 'text-center align-bottom'
                     'col-9 rol-button p-2 text-center': true,
                     'rol-button-active effect-active': props.negativeEffects.includes(effect.name)
                 }">
-                    <img class="w-75" :src="'src/assets/icons/' + effect.name + '.png'" :alt="effect.name + '-icon'">
+                    <img class="w-75" :src="'icons/' + effect.name + '.png'" :alt="effect.name + '-icon'">
                 </figure>
 
             </div>
