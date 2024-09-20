@@ -79,7 +79,7 @@ const addExistingTalent = (talentType) => {
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="deleteTalent(ability)" class="col-4 text-center rol-button2 rounded m-0 p-1">
-                                <img class="w-75 m-0" src="icons/trash.png" alt="trash-icon">
+                                <img class="w-75 m-0" src="/icons/trash.png" alt="trash-icon">
                             </figure>
                         </div>
                     </td>
@@ -99,7 +99,7 @@ const addExistingTalent = (talentType) => {
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="addCustomTalent('ability')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
-                                <img class="w-75 m-0" src="icons/plus.png" alt="trash-icon">
+                                <img class="w-75 m-0" src="/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
                     </td>
@@ -129,7 +129,7 @@ const addExistingTalent = (talentType) => {
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="addExistingTalent('ability')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
-                                <img class="w-75 m-0" src="icons/plus.png" alt="trash-icon">
+                                <img class="w-75 m-0" src="/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
                     </td>
@@ -162,7 +162,7 @@ const addExistingTalent = (talentType) => {
                     <td> 
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="deleteTalent(treat)" class="col-4 text-center rol-button2 rounded m-0 p-1">                                
-                                <img class="w-75 m-0" src="icons/trash.png" alt="trash-icon">
+                                <img class="w-75 m-0" src="/icons/trash.png" alt="trash-icon">
                             </figure>
                         </div>
                     </td>
@@ -182,7 +182,7 @@ const addExistingTalent = (talentType) => {
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="addCustomTalent('treat')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
-                                <img class="w-75 m-0" src="icons/plus.png" alt="trash-icon">
+                                <img class="w-75 m-0" src="/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
                     </td>
@@ -212,7 +212,7 @@ const addExistingTalent = (talentType) => {
                     <td>
                         <div class="row w-100 p-2 justify-content-center m-0">
                             <figure @click="addExistingTalent('treat')" class="col-4 text-center rol-button border border-2 border-black rounded m-0 p-1">
-                                <img class="w-75 m-0" src="icons/plus.png" alt="trash-icon">
+                                <img class="w-75 m-0" src="/icons/plus.png" alt="trash-icon">
                             </figure>
                         </div>
                     </td>
